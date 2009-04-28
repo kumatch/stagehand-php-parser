@@ -48,6 +48,8 @@
 
 
 
+require_once 'Stagehand/PHP/Lexer.php';
+
 /* Prototype file of classed PHP parser.
  * Written by Moriyoshi Koizumi, based on the work by Masato Bito.
  * This file is PUBLIC DOMAIN.
@@ -918,23 +920,28 @@ class Stagehand_PHP_Parser
             3,    3,    3
     );
 
-    protected function yyprintln($msg) {
+    protected function yyprintln($msg) 
+    {
         echo "$msg\n";
     }
 
-    protected function yyflush() {
+    protected function yyflush() 
+    {
         return;
     }
 
-    protected function yyerror($msg) {
+    protected function yyerror($msg) 
+    {
         $this->yyprintln($msg);
     }
 
-    protected function yyaccept() {
+    protected function yyaccept() 
+    {
         $this->yyaccept = 1;
     }
 
-    protected function yyabort() {
+    protected function yyabort() 
+    {
         $this->yyaccept = 2;
     }
 
@@ -942,7 +949,8 @@ class Stagehand_PHP_Parser
     /**
      * Parser entry point
      */
-    public function yyparse($lex) {
+    public function yyparse($lex)
+    {
         $this->lex = $lex;
 
         $this->yyastk = array();
@@ -1088,11 +1096,19 @@ class Stagehand_PHP_Parser
         $this->lex = null;
     }
 
-    public function yyval() {
+    public function parse($file)
+    {
+        $lexer = new Stagehand_PHP_Lexer($file);
+        $this->yyparse($lexer);
+    }
+
+    public function yyval() 
+    {
         return $this->yyval;
     }
 
-    public function filter($name, &$yyval, $params) {
+    public function filter($name, &$yyval, $params)
+    {
         $className = 'Stagehand_PHP_ParserYYToken';
 
         $yyval = new $className($name, $params);
@@ -1100,1611 +1116,2013 @@ class Stagehand_PHP_Parser
 
     private function yyn0() {}
 
-    private function yyn1() {
+    private function yyn1() 
+    {
          self::filter('start', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn2() {
+    private function yyn2() 
+    {
          self::filter('top_statement_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn3() {
+    private function yyn3() 
+    {
          self::filter('top_statement_list', $this->yyval, array()); 
     }
 
-    private function yyn4() {
+    private function yyn4() 
+    {
          self::filter('namespace_name', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn5() {
+    private function yyn5() 
+    {
          self::filter('namespace_name', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn6() {
+    private function yyn6() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn7() {
+    private function yyn7() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn8() {
+    private function yyn8() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn9() {
+    private function yyn9() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn10() {
+    private function yyn10() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn11() {
+    private function yyn11() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn12() {
+    private function yyn12() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn13() {
+    private function yyn13() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn14() {
+    private function yyn14() 
+    {
          self::filter('top_statement', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn15() {
+    private function yyn15() 
+    {
          self::filter('use_declarations', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn16() {
+    private function yyn16() 
+    {
          self::filter('use_declarations', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn17() {
+    private function yyn17() 
+    {
          self::filter('use_declaration', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn18() {
+    private function yyn18() 
+    {
          self::filter('use_declaration', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn19() {
+    private function yyn19() 
+    {
          self::filter('use_declaration', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn20() {
+    private function yyn20() 
+    {
          self::filter('use_declaration', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn21() {
+    private function yyn21() 
+    {
          self::filter('constant_declaration', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn22() {
+    private function yyn22() 
+    {
          self::filter('constant_declaration', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn23() {
+    private function yyn23() 
+    {
          self::filter('inner_statement_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn24() {
+    private function yyn24() 
+    {
          self::filter('inner_statement_list', $this->yyval, array()); 
     }
 
-    private function yyn25() {
+    private function yyn25() 
+    {
          self::filter('inner_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn26() {
+    private function yyn26() 
+    {
          self::filter('inner_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn27() {
+    private function yyn27() 
+    {
          self::filter('inner_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn28() {
+    private function yyn28() 
+    {
          self::filter('inner_statement', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn29() {
+    private function yyn29() 
+    {
          self::filter('statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn30() {
+    private function yyn30() 
+    {
          self::filter('statement', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn31() {
+    private function yyn31() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn32() {
+    private function yyn32() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(7-1)], $this->yyastk[$this->yysp-(7-2)], $this->yyastk[$this->yysp-(7-3)], $this->yyastk[$this->yysp-(7-4)], $this->yyastk[$this->yysp-(7-5)], $this->yyastk[$this->yysp-(7-6)], $this->yyastk[$this->yysp-(7-7)])); 
     }
 
-    private function yyn33() {
+    private function yyn33() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(10-1)], $this->yyastk[$this->yysp-(10-2)], $this->yyastk[$this->yysp-(10-3)], $this->yyastk[$this->yysp-(10-4)], $this->yyastk[$this->yysp-(10-5)], $this->yyastk[$this->yysp-(10-6)], $this->yyastk[$this->yysp-(10-7)], $this->yyastk[$this->yysp-(10-8)], $this->yyastk[$this->yysp-(10-9)], $this->yyastk[$this->yysp-(10-10)])); 
     }
 
-    private function yyn34() {
+    private function yyn34() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn35() {
+    private function yyn35() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(7-1)], $this->yyastk[$this->yysp-(7-2)], $this->yyastk[$this->yysp-(7-3)], $this->yyastk[$this->yysp-(7-4)], $this->yyastk[$this->yysp-(7-5)], $this->yyastk[$this->yysp-(7-6)], $this->yyastk[$this->yysp-(7-7)])); 
     }
 
-    private function yyn36() {
+    private function yyn36() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(9-1)], $this->yyastk[$this->yysp-(9-2)], $this->yyastk[$this->yysp-(9-3)], $this->yyastk[$this->yysp-(9-4)], $this->yyastk[$this->yysp-(9-5)], $this->yyastk[$this->yysp-(9-6)], $this->yyastk[$this->yysp-(9-7)], $this->yyastk[$this->yysp-(9-8)], $this->yyastk[$this->yysp-(9-9)])); 
     }
 
-    private function yyn37() {
+    private function yyn37() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn38() {
+    private function yyn38() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn39() {
+    private function yyn39() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn40() {
+    private function yyn40() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn41() {
+    private function yyn41() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn42() {
+    private function yyn42() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn43() {
+    private function yyn43() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn44() {
+    private function yyn44() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn45() {
+    private function yyn45() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn46() {
+    private function yyn46() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn47() {
+    private function yyn47() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn48() {
+    private function yyn48() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn49() {
+    private function yyn49() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn50() {
+    private function yyn50() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn51() {
+    private function yyn51() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(8-1)], $this->yyastk[$this->yysp-(8-2)], $this->yyastk[$this->yysp-(8-3)], $this->yyastk[$this->yysp-(8-4)], $this->yyastk[$this->yysp-(8-5)], $this->yyastk[$this->yysp-(8-6)], $this->yyastk[$this->yysp-(8-7)], $this->yyastk[$this->yysp-(8-8)])); 
     }
 
-    private function yyn52() {
+    private function yyn52() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(8-1)], $this->yyastk[$this->yysp-(8-2)], $this->yyastk[$this->yysp-(8-3)], $this->yyastk[$this->yysp-(8-4)], $this->yyastk[$this->yysp-(8-5)], $this->yyastk[$this->yysp-(8-6)], $this->yyastk[$this->yysp-(8-7)], $this->yyastk[$this->yysp-(8-8)])); 
     }
 
-    private function yyn53() {
+    private function yyn53() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn54() {
+    private function yyn54() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn55() {
+    private function yyn55() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(13-1)], $this->yyastk[$this->yysp-(13-2)], $this->yyastk[$this->yysp-(13-3)], $this->yyastk[$this->yysp-(13-4)], $this->yyastk[$this->yysp-(13-5)], $this->yyastk[$this->yysp-(13-6)], $this->yyastk[$this->yysp-(13-7)], $this->yyastk[$this->yysp-(13-8)], $this->yyastk[$this->yysp-(13-9)], $this->yyastk[$this->yysp-(13-10)], $this->yyastk[$this->yysp-(13-11)], $this->yyastk[$this->yysp-(13-12)], $this->yyastk[$this->yysp-(13-13)])); 
     }
 
-    private function yyn56() {
+    private function yyn56() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn57() {
+    private function yyn57() 
+    {
          self::filter('unticked_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn58() {
+    private function yyn58() 
+    {
          self::filter('additional_catches', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn59() {
+    private function yyn59() 
+    {
          self::filter('additional_catches', $this->yyval, array()); 
     }
 
-    private function yyn60() {
+    private function yyn60() 
+    {
          self::filter('non_empty_additional_catches', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn61() {
+    private function yyn61() 
+    {
          self::filter('non_empty_additional_catches', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn62() {
+    private function yyn62() 
+    {
          self::filter('additional_catch', $this->yyval, array($this->yyastk[$this->yysp-(8-1)], $this->yyastk[$this->yysp-(8-2)], $this->yyastk[$this->yysp-(8-3)], $this->yyastk[$this->yysp-(8-4)], $this->yyastk[$this->yysp-(8-5)], $this->yyastk[$this->yysp-(8-6)], $this->yyastk[$this->yysp-(8-7)], $this->yyastk[$this->yysp-(8-8)])); 
     }
 
-    private function yyn63() {
+    private function yyn63() 
+    {
          self::filter('unset_variables', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn64() {
+    private function yyn64() 
+    {
          self::filter('unset_variables', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn65() {
+    private function yyn65() 
+    {
          self::filter('unset_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn66() {
+    private function yyn66() 
+    {
          self::filter('function_declaration_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn67() {
+    private function yyn67() 
+    {
          self::filter('class_declaration_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn68() {
+    private function yyn68() 
+    {
          self::filter('is_reference', $this->yyval, array()); 
     }
 
-    private function yyn69() {
+    private function yyn69() 
+    {
          self::filter('is_reference', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn70() {
+    private function yyn70() 
+    {
          self::filter('unticked_function_declaration_statement', $this->yyval, array($this->yyastk[$this->yysp-(9-1)], $this->yyastk[$this->yysp-(9-2)], $this->yyastk[$this->yysp-(9-3)], $this->yyastk[$this->yysp-(9-4)], $this->yyastk[$this->yysp-(9-5)], $this->yyastk[$this->yysp-(9-6)], $this->yyastk[$this->yysp-(9-7)], $this->yyastk[$this->yysp-(9-8)], $this->yyastk[$this->yysp-(9-9)])); 
     }
 
-    private function yyn71() {
+    private function yyn71() 
+    {
          self::filter('unticked_class_declaration_statement', $this->yyval, array($this->yyastk[$this->yysp-(7-1)], $this->yyastk[$this->yysp-(7-2)], $this->yyastk[$this->yysp-(7-3)], $this->yyastk[$this->yysp-(7-4)], $this->yyastk[$this->yysp-(7-5)], $this->yyastk[$this->yysp-(7-6)], $this->yyastk[$this->yysp-(7-7)])); 
     }
 
-    private function yyn72() {
+    private function yyn72() 
+    {
          self::filter('unticked_class_declaration_statement', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn73() {
+    private function yyn73() 
+    {
          self::filter('class_entry_type', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn74() {
+    private function yyn74() 
+    {
          self::filter('class_entry_type', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn75() {
+    private function yyn75() 
+    {
          self::filter('class_entry_type', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn76() {
+    private function yyn76() 
+    {
          self::filter('extends_from', $this->yyval, array()); 
     }
 
-    private function yyn77() {
+    private function yyn77() 
+    {
          self::filter('extends_from', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn78() {
+    private function yyn78() 
+    {
          self::filter('interface_entry', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn79() {
+    private function yyn79() 
+    {
          self::filter('interface_extends_list', $this->yyval, array()); 
     }
 
-    private function yyn80() {
+    private function yyn80() 
+    {
          self::filter('interface_extends_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn81() {
+    private function yyn81() 
+    {
          self::filter('implements_list', $this->yyval, array()); 
     }
 
-    private function yyn82() {
+    private function yyn82() 
+    {
          self::filter('implements_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn83() {
+    private function yyn83() 
+    {
          self::filter('interface_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn84() {
+    private function yyn84() 
+    {
          self::filter('interface_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn85() {
+    private function yyn85() 
+    {
          self::filter('foreach_optional_arg', $this->yyval, array()); 
     }
 
-    private function yyn86() {
+    private function yyn86() 
+    {
          self::filter('foreach_optional_arg', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn87() {
+    private function yyn87() 
+    {
          self::filter('foreach_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn88() {
+    private function yyn88() 
+    {
          self::filter('foreach_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn89() {
+    private function yyn89() 
+    {
          self::filter('for_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn90() {
+    private function yyn90() 
+    {
          self::filter('for_statement', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn91() {
+    private function yyn91() 
+    {
          self::filter('foreach_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn92() {
+    private function yyn92() 
+    {
          self::filter('foreach_statement', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn93() {
+    private function yyn93() 
+    {
          self::filter('declare_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn94() {
+    private function yyn94() 
+    {
          self::filter('declare_statement', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn95() {
+    private function yyn95() 
+    {
          self::filter('declare_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn96() {
+    private function yyn96() 
+    {
          self::filter('declare_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn97() {
+    private function yyn97() 
+    {
          self::filter('switch_case_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn98() {
+    private function yyn98() 
+    {
          self::filter('switch_case_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn99() {
+    private function yyn99() 
+    {
          self::filter('switch_case_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn100() {
+    private function yyn100() 
+    {
          self::filter('switch_case_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn101() {
+    private function yyn101() 
+    {
          self::filter('case_list', $this->yyval, array()); 
     }
 
-    private function yyn102() {
+    private function yyn102() 
+    {
          self::filter('case_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn103() {
+    private function yyn103() 
+    {
          self::filter('case_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn104() {
+    private function yyn104() 
+    {
          self::filter('case_separator', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn105() {
+    private function yyn105() 
+    {
          self::filter('case_separator', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn106() {
+    private function yyn106() 
+    {
          self::filter('while_statement', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn107() {
+    private function yyn107() 
+    {
          self::filter('while_statement', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn108() {
+    private function yyn108() 
+    {
          self::filter('elseif_list', $this->yyval, array()); 
     }
 
-    private function yyn109() {
+    private function yyn109() 
+    {
          self::filter('elseif_list', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn110() {
+    private function yyn110() 
+    {
          self::filter('new_elseif_list', $this->yyval, array()); 
     }
 
-    private function yyn111() {
+    private function yyn111() 
+    {
          self::filter('new_elseif_list', $this->yyval, array($this->yyastk[$this->yysp-(7-1)], $this->yyastk[$this->yysp-(7-2)], $this->yyastk[$this->yysp-(7-3)], $this->yyastk[$this->yysp-(7-4)], $this->yyastk[$this->yysp-(7-5)], $this->yyastk[$this->yysp-(7-6)], $this->yyastk[$this->yysp-(7-7)])); 
     }
 
-    private function yyn112() {
+    private function yyn112() 
+    {
          self::filter('else_single', $this->yyval, array()); 
     }
 
-    private function yyn113() {
+    private function yyn113() 
+    {
          self::filter('else_single', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn114() {
+    private function yyn114() 
+    {
          self::filter('new_else_single', $this->yyval, array()); 
     }
 
-    private function yyn115() {
+    private function yyn115() 
+    {
          self::filter('new_else_single', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn116() {
+    private function yyn116() 
+    {
          self::filter('parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn117() {
+    private function yyn117() 
+    {
          self::filter('parameter_list', $this->yyval, array()); 
     }
 
-    private function yyn118() {
+    private function yyn118() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn119() {
+    private function yyn119() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn120() {
+    private function yyn120() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn121() {
+    private function yyn121() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn122() {
+    private function yyn122() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn123() {
+    private function yyn123() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn124() {
+    private function yyn124() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(7-1)], $this->yyastk[$this->yysp-(7-2)], $this->yyastk[$this->yysp-(7-3)], $this->yyastk[$this->yysp-(7-4)], $this->yyastk[$this->yysp-(7-5)], $this->yyastk[$this->yysp-(7-6)], $this->yyastk[$this->yysp-(7-7)])); 
     }
 
-    private function yyn125() {
+    private function yyn125() 
+    {
          self::filter('non_empty_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn126() {
+    private function yyn126() 
+    {
          self::filter('optional_class_type', $this->yyval, array()); 
     }
 
-    private function yyn127() {
+    private function yyn127() 
+    {
          self::filter('optional_class_type', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn128() {
+    private function yyn128() 
+    {
          self::filter('optional_class_type', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn129() {
+    private function yyn129() 
+    {
          self::filter('function_call_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn130() {
+    private function yyn130() 
+    {
          self::filter('function_call_parameter_list', $this->yyval, array()); 
     }
 
-    private function yyn131() {
+    private function yyn131() 
+    {
          self::filter('non_empty_function_call_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn132() {
+    private function yyn132() 
+    {
          self::filter('non_empty_function_call_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn133() {
+    private function yyn133() 
+    {
          self::filter('non_empty_function_call_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn134() {
+    private function yyn134() 
+    {
          self::filter('non_empty_function_call_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn135() {
+    private function yyn135() 
+    {
          self::filter('non_empty_function_call_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn136() {
+    private function yyn136() 
+    {
          self::filter('non_empty_function_call_parameter_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn137() {
+    private function yyn137() 
+    {
          self::filter('global_var_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn138() {
+    private function yyn138() 
+    {
          self::filter('global_var_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn139() {
+    private function yyn139() 
+    {
          self::filter('global_var', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn140() {
+    private function yyn140() 
+    {
          self::filter('global_var', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn141() {
+    private function yyn141() 
+    {
          self::filter('global_var', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn142() {
+    private function yyn142() 
+    {
          self::filter('static_var_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn143() {
+    private function yyn143() 
+    {
          self::filter('static_var_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn144() {
+    private function yyn144() 
+    {
          self::filter('static_var_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn145() {
+    private function yyn145() 
+    {
          self::filter('static_var_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn146() {
+    private function yyn146() 
+    {
          self::filter('class_statement_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn147() {
+    private function yyn147() 
+    {
          self::filter('class_statement_list', $this->yyval, array()); 
     }
 
-    private function yyn148() {
+    private function yyn148() 
+    {
          self::filter('class_statement', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn149() {
+    private function yyn149() 
+    {
          self::filter('class_statement', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn150() {
+    private function yyn150() 
+    {
          self::filter('class_statement', $this->yyval, array($this->yyastk[$this->yysp-(8-1)], $this->yyastk[$this->yysp-(8-2)], $this->yyastk[$this->yysp-(8-3)], $this->yyastk[$this->yysp-(8-4)], $this->yyastk[$this->yysp-(8-5)], $this->yyastk[$this->yysp-(8-6)], $this->yyastk[$this->yysp-(8-7)], $this->yyastk[$this->yysp-(8-8)])); 
     }
 
-    private function yyn151() {
+    private function yyn151() 
+    {
          self::filter('method_body', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn152() {
+    private function yyn152() 
+    {
          self::filter('method_body', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn153() {
+    private function yyn153() 
+    {
          self::filter('variable_modifiers', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn154() {
+    private function yyn154() 
+    {
          self::filter('variable_modifiers', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn155() {
+    private function yyn155() 
+    {
          self::filter('method_modifiers', $this->yyval, array()); 
     }
 
-    private function yyn156() {
+    private function yyn156() 
+    {
          self::filter('method_modifiers', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn157() {
+    private function yyn157() 
+    {
          self::filter('non_empty_member_modifiers', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn158() {
+    private function yyn158() 
+    {
          self::filter('non_empty_member_modifiers', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn159() {
+    private function yyn159() 
+    {
          self::filter('member_modifier', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn160() {
+    private function yyn160() 
+    {
          self::filter('member_modifier', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn161() {
+    private function yyn161() 
+    {
          self::filter('member_modifier', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn162() {
+    private function yyn162() 
+    {
          self::filter('member_modifier', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn163() {
+    private function yyn163() 
+    {
          self::filter('member_modifier', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn164() {
+    private function yyn164() 
+    {
          self::filter('member_modifier', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn165() {
+    private function yyn165() 
+    {
          self::filter('class_variable_declaration', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn166() {
+    private function yyn166() 
+    {
          self::filter('class_variable_declaration', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn167() {
+    private function yyn167() 
+    {
          self::filter('class_variable_declaration', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn168() {
+    private function yyn168() 
+    {
          self::filter('class_variable_declaration', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn169() {
+    private function yyn169() 
+    {
          self::filter('class_constant_declaration', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn170() {
+    private function yyn170() 
+    {
          self::filter('class_constant_declaration', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn171() {
+    private function yyn171() 
+    {
          self::filter('echo_expr_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn172() {
+    private function yyn172() 
+    {
          self::filter('echo_expr_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn173() {
+    private function yyn173() 
+    {
          self::filter('for_expr', $this->yyval, array()); 
     }
 
-    private function yyn174() {
+    private function yyn174() 
+    {
          self::filter('for_expr', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn175() {
+    private function yyn175() 
+    {
          self::filter('non_empty_for_expr', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn176() {
+    private function yyn176() 
+    {
          self::filter('non_empty_for_expr', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn177() {
+    private function yyn177() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn178() {
+    private function yyn178() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn179() {
+    private function yyn179() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn180() {
+    private function yyn180() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn181() {
+    private function yyn181() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn182() {
+    private function yyn182() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn183() {
+    private function yyn183() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn184() {
+    private function yyn184() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn185() {
+    private function yyn185() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn186() {
+    private function yyn186() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn187() {
+    private function yyn187() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn188() {
+    private function yyn188() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn189() {
+    private function yyn189() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn190() {
+    private function yyn190() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn191() {
+    private function yyn191() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn192() {
+    private function yyn192() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn193() {
+    private function yyn193() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn194() {
+    private function yyn194() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn195() {
+    private function yyn195() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn196() {
+    private function yyn196() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn197() {
+    private function yyn197() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn198() {
+    private function yyn198() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn199() {
+    private function yyn199() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn200() {
+    private function yyn200() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn201() {
+    private function yyn201() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn202() {
+    private function yyn202() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn203() {
+    private function yyn203() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn204() {
+    private function yyn204() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn205() {
+    private function yyn205() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn206() {
+    private function yyn206() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn207() {
+    private function yyn207() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn208() {
+    private function yyn208() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn209() {
+    private function yyn209() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn210() {
+    private function yyn210() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn211() {
+    private function yyn211() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn212() {
+    private function yyn212() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn213() {
+    private function yyn213() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn214() {
+    private function yyn214() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn215() {
+    private function yyn215() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn216() {
+    private function yyn216() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn217() {
+    private function yyn217() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn218() {
+    private function yyn218() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn219() {
+    private function yyn219() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn220() {
+    private function yyn220() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn221() {
+    private function yyn221() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn222() {
+    private function yyn222() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn223() {
+    private function yyn223() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn224() {
+    private function yyn224() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn225() {
+    private function yyn225() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn226() {
+    private function yyn226() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn227() {
+    private function yyn227() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn228() {
+    private function yyn228() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn229() {
+    private function yyn229() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn230() {
+    private function yyn230() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn231() {
+    private function yyn231() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn232() {
+    private function yyn232() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn233() {
+    private function yyn233() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn234() {
+    private function yyn234() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn235() {
+    private function yyn235() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn236() {
+    private function yyn236() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn237() {
+    private function yyn237() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn238() {
+    private function yyn238() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn239() {
+    private function yyn239() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn240() {
+    private function yyn240() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn241() {
+    private function yyn241() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn242() {
+    private function yyn242() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn243() {
+    private function yyn243() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn244() {
+    private function yyn244() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn245() {
+    private function yyn245() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn246() {
+    private function yyn246() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(9-1)], $this->yyastk[$this->yysp-(9-2)], $this->yyastk[$this->yysp-(9-3)], $this->yyastk[$this->yysp-(9-4)], $this->yyastk[$this->yysp-(9-5)], $this->yyastk[$this->yysp-(9-6)], $this->yyastk[$this->yysp-(9-7)], $this->yyastk[$this->yysp-(9-8)], $this->yyastk[$this->yysp-(9-9)])); 
     }
 
-    private function yyn247() {
+    private function yyn247() 
+    {
          self::filter('expr_without_variable', $this->yyval, array($this->yyastk[$this->yysp-(10-1)], $this->yyastk[$this->yysp-(10-2)], $this->yyastk[$this->yysp-(10-3)], $this->yyastk[$this->yysp-(10-4)], $this->yyastk[$this->yysp-(10-5)], $this->yyastk[$this->yysp-(10-6)], $this->yyastk[$this->yysp-(10-7)], $this->yyastk[$this->yysp-(10-8)], $this->yyastk[$this->yysp-(10-9)], $this->yyastk[$this->yysp-(10-10)])); 
     }
 
-    private function yyn248() {
+    private function yyn248() 
+    {
          self::filter('function', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn249() {
+    private function yyn249() 
+    {
          self::filter('lexical_vars', $this->yyval, array()); 
     }
 
-    private function yyn250() {
+    private function yyn250() 
+    {
          self::filter('lexical_vars', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn251() {
+    private function yyn251() 
+    {
          self::filter('lexical_var_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn252() {
+    private function yyn252() 
+    {
          self::filter('lexical_var_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn253() {
+    private function yyn253() 
+    {
          self::filter('lexical_var_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn254() {
+    private function yyn254() 
+    {
          self::filter('lexical_var_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn255() {
+    private function yyn255() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn256() {
+    private function yyn256() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn257() {
+    private function yyn257() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn258() {
+    private function yyn258() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn259() {
+    private function yyn259() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn260() {
+    private function yyn260() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn261() {
+    private function yyn261() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn262() {
+    private function yyn262() 
+    {
          self::filter('function_call', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn263() {
+    private function yyn263() 
+    {
          self::filter('class_name', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn264() {
+    private function yyn264() 
+    {
          self::filter('class_name', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn265() {
+    private function yyn265() 
+    {
          self::filter('class_name', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn266() {
+    private function yyn266() 
+    {
          self::filter('class_name', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn267() {
+    private function yyn267() 
+    {
          self::filter('fully_qualified_class_name', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn268() {
+    private function yyn268() 
+    {
          self::filter('fully_qualified_class_name', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn269() {
+    private function yyn269() 
+    {
          self::filter('fully_qualified_class_name', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn270() {
+    private function yyn270() 
+    {
          self::filter('class_name_reference', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn271() {
+    private function yyn271() 
+    {
          self::filter('class_name_reference', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn272() {
+    private function yyn272() 
+    {
          self::filter('dynamic_class_name_reference', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn273() {
+    private function yyn273() 
+    {
          self::filter('dynamic_class_name_reference', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn274() {
+    private function yyn274() 
+    {
          self::filter('dynamic_class_name_variable_properties', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn275() {
+    private function yyn275() 
+    {
          self::filter('dynamic_class_name_variable_properties', $this->yyval, array()); 
     }
 
-    private function yyn276() {
+    private function yyn276() 
+    {
          self::filter('dynamic_class_name_variable_property', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn277() {
+    private function yyn277() 
+    {
          self::filter('exit_expr', $this->yyval, array()); 
     }
 
-    private function yyn278() {
+    private function yyn278() 
+    {
          self::filter('exit_expr', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn279() {
+    private function yyn279() 
+    {
          self::filter('exit_expr', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn280() {
+    private function yyn280() 
+    {
          self::filter('backticks_expr', $this->yyval, array()); 
     }
 
-    private function yyn281() {
+    private function yyn281() 
+    {
          self::filter('backticks_expr', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn282() {
+    private function yyn282() 
+    {
          self::filter('backticks_expr', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn283() {
+    private function yyn283() 
+    {
          self::filter('ctor_arguments', $this->yyval, array()); 
     }
 
-    private function yyn284() {
+    private function yyn284() 
+    {
          self::filter('ctor_arguments', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn285() {
+    private function yyn285() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn286() {
+    private function yyn286() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn287() {
+    private function yyn287() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn288() {
+    private function yyn288() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn289() {
+    private function yyn289() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn290() {
+    private function yyn290() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn291() {
+    private function yyn291() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn292() {
+    private function yyn292() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn293() {
+    private function yyn293() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn294() {
+    private function yyn294() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn295() {
+    private function yyn295() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn296() {
+    private function yyn296() 
+    {
          self::filter('common_scalar', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn297() {
+    private function yyn297() 
+    {
          self::filter('start_heredoc', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn298() {
+    private function yyn298() 
+    {
          self::filter('start_heredoc', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn299() {
+    private function yyn299() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn300() {
+    private function yyn300() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn301() {
+    private function yyn301() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn302() {
+    private function yyn302() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn303() {
+    private function yyn303() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn304() {
+    private function yyn304() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn305() {
+    private function yyn305() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn306() {
+    private function yyn306() 
+    {
          self::filter('static_scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn307() {
+    private function yyn307() 
+    {
          self::filter('static_class_constant', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn308() {
+    private function yyn308() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn309() {
+    private function yyn309() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn310() {
+    private function yyn310() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn311() {
+    private function yyn311() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn312() {
+    private function yyn312() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn313() {
+    private function yyn313() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn314() {
+    private function yyn314() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn315() {
+    private function yyn315() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn316() {
+    private function yyn316() 
+    {
          self::filter('scalar', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn317() {
+    private function yyn317() 
+    {
          self::filter('static_array_pair_list', $this->yyval, array()); 
     }
 
-    private function yyn318() {
+    private function yyn318() 
+    {
          self::filter('static_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn319() {
+    private function yyn319() 
+    {
          self::filter('possible_comma', $this->yyval, array()); 
     }
 
-    private function yyn320() {
+    private function yyn320() 
+    {
          self::filter('possible_comma', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn321() {
+    private function yyn321() 
+    {
          self::filter('non_empty_static_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn322() {
+    private function yyn322() 
+    {
          self::filter('non_empty_static_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn323() {
+    private function yyn323() 
+    {
          self::filter('non_empty_static_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn324() {
+    private function yyn324() 
+    {
          self::filter('non_empty_static_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn325() {
+    private function yyn325() 
+    {
          self::filter('expr', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn326() {
+    private function yyn326() 
+    {
          self::filter('expr', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn327() {
+    private function yyn327() 
+    {
          self::filter('r_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn328() {
+    private function yyn328() 
+    {
          self::filter('w_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn329() {
+    private function yyn329() 
+    {
          self::filter('rw_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn330() {
+    private function yyn330() 
+    {
          self::filter('variable', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn331() {
+    private function yyn331() 
+    {
          self::filter('variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn332() {
+    private function yyn332() 
+    {
          self::filter('variable_properties', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn333() {
+    private function yyn333() 
+    {
          self::filter('variable_properties', $this->yyval, array()); 
     }
 
-    private function yyn334() {
+    private function yyn334() 
+    {
          self::filter('variable_property', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn335() {
+    private function yyn335() 
+    {
          self::filter('method_or_not', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn336() {
+    private function yyn336() 
+    {
          self::filter('method_or_not', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)])); 
     }
 
-    private function yyn337() {
+    private function yyn337() 
+    {
          self::filter('method_or_not', $this->yyval, array()); 
     }
 
-    private function yyn338() {
+    private function yyn338() 
+    {
          self::filter('variable_without_objects', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn339() {
+    private function yyn339() 
+    {
          self::filter('variable_without_objects', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn340() {
+    private function yyn340() 
+    {
          self::filter('static_member', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn341() {
+    private function yyn341() 
+    {
          self::filter('static_member', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn342() {
+    private function yyn342() 
+    {
          self::filter('variable_class_name', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn343() {
+    private function yyn343() 
+    {
          self::filter('base_variable_with_function_calls', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn344() {
+    private function yyn344() 
+    {
          self::filter('base_variable_with_function_calls', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn345() {
+    private function yyn345() 
+    {
          self::filter('base_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn346() {
+    private function yyn346() 
+    {
          self::filter('base_variable', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn347() {
+    private function yyn347() 
+    {
          self::filter('base_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn348() {
+    private function yyn348() 
+    {
          self::filter('reference_variable', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn349() {
+    private function yyn349() 
+    {
          self::filter('reference_variable', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn350() {
+    private function yyn350() 
+    {
          self::filter('reference_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn351() {
+    private function yyn351() 
+    {
          self::filter('compound_variable', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn352() {
+    private function yyn352() 
+    {
          self::filter('compound_variable', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn353() {
+    private function yyn353() 
+    {
          self::filter('dim_offset', $this->yyval, array()); 
     }
 
-    private function yyn354() {
+    private function yyn354() 
+    {
          self::filter('dim_offset', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn355() {
+    private function yyn355() 
+    {
          self::filter('object_property', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn356() {
+    private function yyn356() 
+    {
          self::filter('object_property', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn357() {
+    private function yyn357() 
+    {
          self::filter('object_dim_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn358() {
+    private function yyn358() 
+    {
          self::filter('object_dim_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn359() {
+    private function yyn359() 
+    {
          self::filter('object_dim_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn360() {
+    private function yyn360() 
+    {
          self::filter('variable_name', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn361() {
+    private function yyn361() 
+    {
          self::filter('variable_name', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn362() {
+    private function yyn362() 
+    {
          self::filter('simple_indirect_reference', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn363() {
+    private function yyn363() 
+    {
          self::filter('simple_indirect_reference', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn364() {
+    private function yyn364() 
+    {
          self::filter('assignment_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn365() {
+    private function yyn365() 
+    {
          self::filter('assignment_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn366() {
+    private function yyn366() 
+    {
          self::filter('assignment_list_element', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn367() {
+    private function yyn367() 
+    {
          self::filter('assignment_list_element', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn368() {
+    private function yyn368() 
+    {
          self::filter('assignment_list_element', $this->yyval, array()); 
     }
 
-    private function yyn369() {
+    private function yyn369() 
+    {
          self::filter('array_pair_list', $this->yyval, array()); 
     }
 
-    private function yyn370() {
+    private function yyn370() 
+    {
          self::filter('array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn371() {
+    private function yyn371() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(5-1)], $this->yyastk[$this->yysp-(5-2)], $this->yyastk[$this->yysp-(5-3)], $this->yyastk[$this->yysp-(5-4)], $this->yyastk[$this->yysp-(5-5)])); 
     }
 
-    private function yyn372() {
+    private function yyn372() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn373() {
+    private function yyn373() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn374() {
+    private function yyn374() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn375() {
+    private function yyn375() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn376() {
+    private function yyn376() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn377() {
+    private function yyn377() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn378() {
+    private function yyn378() 
+    {
          self::filter('non_empty_array_pair_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn379() {
+    private function yyn379() 
+    {
          self::filter('encaps_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn380() {
+    private function yyn380() 
+    {
          self::filter('encaps_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn381() {
+    private function yyn381() 
+    {
          self::filter('encaps_list', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn382() {
+    private function yyn382() 
+    {
          self::filter('encaps_list', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn383() {
+    private function yyn383() 
+    {
          self::filter('encaps_var', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn384() {
+    private function yyn384() 
+    {
          self::filter('encaps_var', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn385() {
+    private function yyn385() 
+    {
          self::filter('encaps_var', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn386() {
+    private function yyn386() 
+    {
          self::filter('encaps_var', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn387() {
+    private function yyn387() 
+    {
          self::filter('encaps_var', $this->yyval, array($this->yyastk[$this->yysp-(6-1)], $this->yyastk[$this->yysp-(6-2)], $this->yyastk[$this->yysp-(6-3)], $this->yyastk[$this->yysp-(6-4)], $this->yyastk[$this->yysp-(6-5)], $this->yyastk[$this->yysp-(6-6)])); 
     }
 
-    private function yyn388() {
+    private function yyn388() 
+    {
          self::filter('encaps_var', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn389() {
+    private function yyn389() 
+    {
          self::filter('encaps_var_offset', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn390() {
+    private function yyn390() 
+    {
          self::filter('encaps_var_offset', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn391() {
+    private function yyn391() 
+    {
          self::filter('encaps_var_offset', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn392() {
+    private function yyn392() 
+    {
          self::filter('internal_functions_in_yacc', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn393() {
+    private function yyn393() 
+    {
          self::filter('internal_functions_in_yacc', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn394() {
+    private function yyn394() 
+    {
          self::filter('internal_functions_in_yacc', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn395() {
+    private function yyn395() 
+    {
          self::filter('internal_functions_in_yacc', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn396() {
+    private function yyn396() 
+    {
          self::filter('internal_functions_in_yacc', $this->yyval, array($this->yyastk[$this->yysp-(4-1)], $this->yyastk[$this->yysp-(4-2)], $this->yyastk[$this->yysp-(4-3)], $this->yyastk[$this->yysp-(4-4)])); 
     }
 
-    private function yyn397() {
+    private function yyn397() 
+    {
          self::filter('internal_functions_in_yacc', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn398() {
+    private function yyn398() 
+    {
          self::filter('internal_functions_in_yacc', $this->yyval, array($this->yyastk[$this->yysp-(2-1)], $this->yyastk[$this->yysp-(2-2)])); 
     }
 
-    private function yyn399() {
+    private function yyn399() 
+    {
          self::filter('isset_variables', $this->yyval, array($this->yyastk[$this->yysp-(1-1)])); 
     }
 
-    private function yyn400() {
+    private function yyn400() 
+    {
          self::filter('isset_variables', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn401() {
+    private function yyn401() 
+    {
          self::filter('class_constant', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 
-    private function yyn402() {
+    private function yyn402() 
+    {
          self::filter('class_constant', $this->yyval, array($this->yyastk[$this->yysp-(3-1)], $this->yyastk[$this->yysp-(3-2)], $this->yyastk[$this->yysp-(3-3)])); 
     }
 }

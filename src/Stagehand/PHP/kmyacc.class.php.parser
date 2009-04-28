@@ -6,6 +6,8 @@ $meta @
 @semval(%n,%t) $this->yyastk[$this->yysp-(%l-%n)]
 @include;
 
+require_once 'Stagehand/PHP/Lexer.php';
+
 /* Prototype file of classed PHP parser.
  * Written by Moriyoshi Koizumi, based on the work by Masato Bito.
  * This file is PUBLIC DOMAIN.
@@ -134,28 +136,34 @@ class YYParser
         @listvar yylen
     );
 
-    protected function yyprintln($msg) {
+    protected function yyprintln($msg) 
+    {
         echo "$msg\n";
     }
 
-    protected function yyflush() {
+    protected function yyflush() 
+    {
         return;
     }
 
-    protected function yyerror($msg) {
+    protected function yyerror($msg) 
+    {
         $this->yyprintln($msg);
     }
 
-    protected function yyaccept() {
+    protected function yyaccept() 
+    {
         $this->yyaccept = 1;
     }
 
-    protected function yyabort() {
+    protected function yyabort() 
+    {
         $this->yyaccept = 2;
     }
 
 @if -t
-    public static function yytokname($n) {
+    public static function yytokname($n) 
+    {
         switch ($n) {
         @switch-for-token-name;
         default:
@@ -164,39 +172,46 @@ class YYParser
     }
 
     /* Traditional Debug Mode */
-    private function YYTRACE_NEWSTATE($state, $sym) {
+    private function YYTRACE_NEWSTATE($state, $sym)
+    {
         if ($this->yydebug) {
             $this->yyprintln("% State " . $state . ", Lookahead "
                       . ($sym < 0 ? "--none--" : self::$yyterminals[$sym]));
         }
     }
 
-    private function YYTRACE_READ($sym) {
+    private function YYTRACE_READ($sym)
+    {
         if ($this->yydebug)
             $this->yyprintln("% Reading " . self::$yyterminals[$sym]);
     }
 
-    private function YYTRACE_SHIFT($sym) {
+    private function YYTRACE_SHIFT($sym)
+    {
         if ($this->yydebug)
             $this->yyprintln("% Shift " . self::$yyterminals[$sym]);
     }
 
-    private function YYTRACE_ACCEPT() {
+    private function YYTRACE_ACCEPT()
+    {
         if ($this->yydebug)
             $this->yyprintln("% Accepted.");
     }
 
-    private function YYTRACE_REDUCE($n) {
+    private function YYTRACE_REDUCE($n)
+    {
         if ($this->yydebug)
             $this->yyprintln("% Reduce by (" . $n . ") " . self::$yyproduction[$n]);
     }
 
-    private function YYTRACE_POP($state) {
+    private function YYTRACE_POP($state)
+    {
         if ($this->yydebug)
             $this->yyprintln("% Recovering, uncovers state " . $state);
     }
 
-    private function YYTRACE_DISCARD($sym) {
+    private function YYTRACE_DISCARD($sym)
+    {
         if ($this->yydebug)
             $this->yyprintln("% Discard " . self::$yyterminals[$sym]);
     }
@@ -205,7 +220,8 @@ class YYParser
     /**
      * Parser entry point
      */
-    public function yyparse($lex) {
+    public function yyparse($lex)
+    {
         $this->lex = $lex;
 
         $this->yyastk = array();
@@ -375,11 +391,19 @@ class YYParser
         $this->lex = null;
     }
 
-    public function yyval() {
+    public function parse($file)
+    {
+        $lexer = new Stagehand_PHP_Lexer($file);
+        $this->yyparse($lexer);
+    }
+
+    public function yyval() 
+    {
         return $this->yyval;
     }
 
-    public function filter($name, &$yyval, $params) {
+    public function filter($name, &$yyval, $params)
+    {
 @if -p
         $className = '@(-p)YYToken';
 @endif
@@ -392,7 +416,8 @@ class YYParser
 
 @reduce
 
-    private function yyn%n() {
+    private function yyn%n() 
+    {
         %b
     }
 @noact
