@@ -1,0 +1,1011 @@
+object(Stagehand_PHP_ParserYYToken)#117 (2) {
+  ["_name:private"]=>
+  string(5) "start"
+  ["_values:private"]=>
+  array(1) {
+    [0]=>
+    object(Stagehand_PHP_ParserYYToken)#116 (2) {
+      ["_name:private"]=>
+      string(18) "top_statement_list"
+      ["_values:private"]=>
+      array(2) {
+        [0]=>
+        object(Stagehand_PHP_ParserYYToken)#104 (2) {
+          ["_name:private"]=>
+          string(18) "top_statement_list"
+          ["_values:private"]=>
+          array(2) {
+            [0]=>
+            object(Stagehand_PHP_ParserYYToken)#22 (2) {
+              ["_name:private"]=>
+              string(18) "top_statement_list"
+              ["_values:private"]=>
+              array(2) {
+                [0]=>
+                object(Stagehand_PHP_ParserYYToken)#3 (2) {
+                  ["_name:private"]=>
+                  string(18) "top_statement_list"
+                  ["_values:private"]=>
+                  array(0) {
+                  }
+                }
+                [1]=>
+                object(Stagehand_PHP_ParserYYToken)#21 (2) {
+                  ["_name:private"]=>
+                  string(13) "top_statement"
+                  ["_values:private"]=>
+                  array(1) {
+                    [0]=>
+                    object(Stagehand_PHP_ParserYYToken)#20 (2) {
+                      ["_name:private"]=>
+                      string(9) "statement"
+                      ["_values:private"]=>
+                      array(1) {
+                        [0]=>
+                        object(Stagehand_PHP_ParserYYToken)#19 (2) {
+                          ["_name:private"]=>
+                          string(18) "unticked_statement"
+                          ["_values:private"]=>
+                          array(2) {
+                            [0]=>
+                            object(Stagehand_PHP_ParserYYToken)#18 (2) {
+                              ["_name:private"]=>
+                              string(4) "expr"
+                              ["_values:private"]=>
+                              array(1) {
+                                [0]=>
+                                object(Stagehand_PHP_ParserYYToken)#17 (2) {
+                                  ["_name:private"]=>
+                                  string(10) "r_variable"
+                                  ["_values:private"]=>
+                                  array(1) {
+                                    [0]=>
+                                    object(Stagehand_PHP_ParserYYToken)#16 (2) {
+                                      ["_name:private"]=>
+                                      string(8) "variable"
+                                      ["_values:private"]=>
+                                      array(1) {
+                                        [0]=>
+                                        object(Stagehand_PHP_ParserYYToken)#15 (2) {
+                                          ["_name:private"]=>
+                                          string(33) "base_variable_with_function_calls"
+                                          ["_values:private"]=>
+                                          array(1) {
+                                            [0]=>
+                                            object(Stagehand_PHP_ParserYYToken)#14 (2) {
+                                              ["_name:private"]=>
+                                              string(13) "function_call"
+                                              ["_values:private"]=>
+                                              array(4) {
+                                                [0]=>
+                                                object(Stagehand_PHP_ParserYYToken)#4 (2) {
+                                                  ["_name:private"]=>
+                                                  string(14) "namespace_name"
+                                                  ["_values:private"]=>
+                                                  array(1) {
+                                                    [0]=>
+                                                    string(6) "define"
+                                                  }
+                                                }
+                                                [1]=>
+                                                string(1) "("
+                                                [2]=>
+                                                object(Stagehand_PHP_ParserYYToken)#13 (2) {
+                                                  ["_name:private"]=>
+                                                  string(28) "function_call_parameter_list"
+                                                  ["_values:private"]=>
+                                                  array(1) {
+                                                    [0]=>
+                                                    object(Stagehand_PHP_ParserYYToken)#12 (2) {
+                                                      ["_name:private"]=>
+                                                      string(38) "non_empty_function_call_parameter_list"
+                                                      ["_values:private"]=>
+                                                      array(3) {
+                                                        [0]=>
+                                                        object(Stagehand_PHP_ParserYYToken)#8 (2) {
+                                                          ["_name:private"]=>
+                                                          string(38) "non_empty_function_call_parameter_list"
+                                                          ["_values:private"]=>
+                                                          array(1) {
+                                                            [0]=>
+                                                            object(Stagehand_PHP_ParserYYToken)#7 (2) {
+                                                              ["_name:private"]=>
+                                                              string(21) "expr_without_variable"
+                                                              ["_values:private"]=>
+                                                              array(1) {
+                                                                [0]=>
+                                                                object(Stagehand_PHP_ParserYYToken)#6 (2) {
+                                                                  ["_name:private"]=>
+                                                                  string(6) "scalar"
+                                                                  ["_values:private"]=>
+                                                                  array(1) {
+                                                                    [0]=>
+                                                                    object(Stagehand_PHP_ParserYYToken)#5 (2) {
+                                                                      ["_name:private"]=>
+                                                                      string(13) "common_scalar"
+                                                                      ["_values:private"]=>
+                                                                      array(1) {
+                                                                        [0]=>
+                                                                        string(5) ""AAA""
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                        [1]=>
+                                                        string(1) ","
+                                                        [2]=>
+                                                        object(Stagehand_PHP_ParserYYToken)#11 (2) {
+                                                          ["_name:private"]=>
+                                                          string(21) "expr_without_variable"
+                                                          ["_values:private"]=>
+                                                          array(1) {
+                                                            [0]=>
+                                                            object(Stagehand_PHP_ParserYYToken)#10 (2) {
+                                                              ["_name:private"]=>
+                                                              string(6) "scalar"
+                                                              ["_values:private"]=>
+                                                              array(1) {
+                                                                [0]=>
+                                                                object(Stagehand_PHP_ParserYYToken)#9 (2) {
+                                                                  ["_name:private"]=>
+                                                                  string(13) "common_scalar"
+                                                                  ["_values:private"]=>
+                                                                  array(1) {
+                                                                    [0]=>
+                                                                    string(2) "10"
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                                [3]=>
+                                                string(1) ")"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                            [1]=>
+                            string(1) ";"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            [1]=>
+            object(Stagehand_PHP_ParserYYToken)#103 (2) {
+              ["_name:private"]=>
+              string(13) "top_statement"
+              ["_values:private"]=>
+              array(1) {
+                [0]=>
+                object(Stagehand_PHP_ParserYYToken)#102 (2) {
+                  ["_name:private"]=>
+                  string(27) "class_declaration_statement"
+                  ["_values:private"]=>
+                  array(1) {
+                    [0]=>
+                    object(Stagehand_PHP_ParserYYToken)#101 (2) {
+                      ["_name:private"]=>
+                      string(36) "unticked_class_declaration_statement"
+                      ["_values:private"]=>
+                      array(7) {
+                        [0]=>
+                        object(Stagehand_PHP_ParserYYToken)#23 (2) {
+                          ["_name:private"]=>
+                          string(16) "class_entry_type"
+                          ["_values:private"]=>
+                          array(1) {
+                            [0]=>
+                            string(5) "class"
+                          }
+                        }
+                        [1]=>
+                        string(3) "Foo"
+                        [2]=>
+                        object(Stagehand_PHP_ParserYYToken)#24 (2) {
+                          ["_name:private"]=>
+                          string(12) "extends_from"
+                          ["_values:private"]=>
+                          array(0) {
+                          }
+                        }
+                        [3]=>
+                        object(Stagehand_PHP_ParserYYToken)#25 (2) {
+                          ["_name:private"]=>
+                          string(15) "implements_list"
+                          ["_values:private"]=>
+                          array(0) {
+                          }
+                        }
+                        [4]=>
+                        string(1) "{"
+                        [5]=>
+                        object(Stagehand_PHP_ParserYYToken)#100 (2) {
+                          ["_name:private"]=>
+                          string(20) "class_statement_list"
+                          ["_values:private"]=>
+                          array(2) {
+                            [0]=>
+                            object(Stagehand_PHP_ParserYYToken)#80 (2) {
+                              ["_name:private"]=>
+                              string(20) "class_statement_list"
+                              ["_values:private"]=>
+                              array(2) {
+                                [0]=>
+                                object(Stagehand_PHP_ParserYYToken)#26 (2) {
+                                  ["_name:private"]=>
+                                  string(20) "class_statement_list"
+                                  ["_values:private"]=>
+                                  array(0) {
+                                  }
+                                }
+                                [1]=>
+                                object(Stagehand_PHP_ParserYYToken)#79 (2) {
+                                  ["_name:private"]=>
+                                  string(15) "class_statement"
+                                  ["_values:private"]=>
+                                  array(8) {
+                                    [0]=>
+                                    object(Stagehand_PHP_ParserYYToken)#29 (2) {
+                                      ["_name:private"]=>
+                                      string(16) "method_modifiers"
+                                      ["_values:private"]=>
+                                      array(1) {
+                                        [0]=>
+                                        object(Stagehand_PHP_ParserYYToken)#28 (2) {
+                                          ["_name:private"]=>
+                                          string(26) "non_empty_member_modifiers"
+                                          ["_values:private"]=>
+                                          array(1) {
+                                            [0]=>
+                                            object(Stagehand_PHP_ParserYYToken)#27 (2) {
+                                              ["_name:private"]=>
+                                              string(15) "member_modifier"
+                                              ["_values:private"]=>
+                                              array(1) {
+                                                [0]=>
+                                                string(6) "public"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                    [1]=>
+                                    object(Stagehand_PHP_ParserYYToken)#30 (2) {
+                                      ["_name:private"]=>
+                                      string(8) "function"
+                                      ["_values:private"]=>
+                                      array(1) {
+                                        [0]=>
+                                        string(8) "function"
+                                      }
+                                    }
+                                    [2]=>
+                                    object(Stagehand_PHP_ParserYYToken)#31 (2) {
+                                      ["_name:private"]=>
+                                      string(12) "is_reference"
+                                      ["_values:private"]=>
+                                      array(0) {
+                                      }
+                                    }
+                                    [3]=>
+                                    string(11) "__construct"
+                                    [4]=>
+                                    string(1) "("
+                                    [5]=>
+                                    object(Stagehand_PHP_ParserYYToken)#36 (2) {
+                                      ["_name:private"]=>
+                                      string(14) "parameter_list"
+                                      ["_values:private"]=>
+                                      array(1) {
+                                        [0]=>
+                                        object(Stagehand_PHP_ParserYYToken)#35 (2) {
+                                          ["_name:private"]=>
+                                          string(24) "non_empty_parameter_list"
+                                          ["_values:private"]=>
+                                          array(4) {
+                                            [0]=>
+                                            object(Stagehand_PHP_ParserYYToken)#33 (2) {
+                                              ["_name:private"]=>
+                                              string(24) "non_empty_parameter_list"
+                                              ["_values:private"]=>
+                                              array(2) {
+                                                [0]=>
+                                                object(Stagehand_PHP_ParserYYToken)#32 (2) {
+                                                  ["_name:private"]=>
+                                                  string(19) "optional_class_type"
+                                                  ["_values:private"]=>
+                                                  array(0) {
+                                                  }
+                                                }
+                                                [1]=>
+                                                string(2) "$a"
+                                              }
+                                            }
+                                            [1]=>
+                                            string(1) ","
+                                            [2]=>
+                                            object(Stagehand_PHP_ParserYYToken)#34 (2) {
+                                              ["_name:private"]=>
+                                              string(19) "optional_class_type"
+                                              ["_values:private"]=>
+                                              array(0) {
+                                              }
+                                            }
+                                            [3]=>
+                                            string(2) "$b"
+                                          }
+                                        }
+                                      }
+                                    }
+                                    [6]=>
+                                    string(1) ")"
+                                    [7]=>
+                                    object(Stagehand_PHP_ParserYYToken)#78 (2) {
+                                      ["_name:private"]=>
+                                      string(11) "method_body"
+                                      ["_values:private"]=>
+                                      array(3) {
+                                        [0]=>
+                                        string(1) "{"
+                                        [1]=>
+                                        object(Stagehand_PHP_ParserYYToken)#77 (2) {
+                                          ["_name:private"]=>
+                                          string(20) "inner_statement_list"
+                                          ["_values:private"]=>
+                                          array(2) {
+                                            [0]=>
+                                            object(Stagehand_PHP_ParserYYToken)#64 (2) {
+                                              ["_name:private"]=>
+                                              string(20) "inner_statement_list"
+                                              ["_values:private"]=>
+                                              array(2) {
+                                                [0]=>
+                                                object(Stagehand_PHP_ParserYYToken)#37 (2) {
+                                                  ["_name:private"]=>
+                                                  string(20) "inner_statement_list"
+                                                  ["_values:private"]=>
+                                                  array(0) {
+                                                  }
+                                                }
+                                                [1]=>
+                                                object(Stagehand_PHP_ParserYYToken)#63 (2) {
+                                                  ["_name:private"]=>
+                                                  string(15) "inner_statement"
+                                                  ["_values:private"]=>
+                                                  array(1) {
+                                                    [0]=>
+                                                    object(Stagehand_PHP_ParserYYToken)#62 (2) {
+                                                      ["_name:private"]=>
+                                                      string(9) "statement"
+                                                      ["_values:private"]=>
+                                                      array(1) {
+                                                        [0]=>
+                                                        object(Stagehand_PHP_ParserYYToken)#61 (2) {
+                                                          ["_name:private"]=>
+                                                          string(18) "unticked_statement"
+                                                          ["_values:private"]=>
+                                                          array(2) {
+                                                            [0]=>
+                                                            object(Stagehand_PHP_ParserYYToken)#60 (2) {
+                                                              ["_name:private"]=>
+                                                              string(4) "expr"
+                                                              ["_values:private"]=>
+                                                              array(1) {
+                                                                [0]=>
+                                                                object(Stagehand_PHP_ParserYYToken)#59 (2) {
+                                                                  ["_name:private"]=>
+                                                                  string(21) "expr_without_variable"
+                                                                  ["_values:private"]=>
+                                                                  array(3) {
+                                                                    [0]=>
+                                                                    object(Stagehand_PHP_ParserYYToken)#42 (2) {
+                                                                      ["_name:private"]=>
+                                                                      string(8) "variable"
+                                                                      ["_values:private"]=>
+                                                                      array(1) {
+                                                                        [0]=>
+                                                                        object(Stagehand_PHP_ParserYYToken)#41 (2) {
+                                                                          ["_name:private"]=>
+                                                                          string(33) "base_variable_with_function_calls"
+                                                                          ["_values:private"]=>
+                                                                          array(1) {
+                                                                            [0]=>
+                                                                            object(Stagehand_PHP_ParserYYToken)#40 (2) {
+                                                                              ["_name:private"]=>
+                                                                              string(13) "base_variable"
+                                                                              ["_values:private"]=>
+                                                                              array(1) {
+                                                                                [0]=>
+                                                                                object(Stagehand_PHP_ParserYYToken)#39 (2) {
+                                                                                  ["_name:private"]=>
+                                                                                  string(18) "reference_variable"
+                                                                                  ["_values:private"]=>
+                                                                                  array(1) {
+                                                                                    [0]=>
+                                                                                    object(Stagehand_PHP_ParserYYToken)#38 (2) {
+                                                                                      ["_name:private"]=>
+                                                                                      string(17) "compound_variable"
+                                                                                      ["_values:private"]=>
+                                                                                      array(1) {
+                                                                                        [0]=>
+                                                                                        string(2) "$c"
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                    [1]=>
+                                                                    string(1) "="
+                                                                    [2]=>
+                                                                    object(Stagehand_PHP_ParserYYToken)#58 (2) {
+                                                                      ["_name:private"]=>
+                                                                      string(4) "expr"
+                                                                      ["_values:private"]=>
+                                                                      array(1) {
+                                                                        [0]=>
+                                                                        object(Stagehand_PHP_ParserYYToken)#57 (2) {
+                                                                          ["_name:private"]=>
+                                                                          string(21) "expr_without_variable"
+                                                                          ["_values:private"]=>
+                                                                          array(3) {
+                                                                            [0]=>
+                                                                            object(Stagehand_PHP_ParserYYToken)#49 (2) {
+                                                                              ["_name:private"]=>
+                                                                              string(4) "expr"
+                                                                              ["_values:private"]=>
+                                                                              array(1) {
+                                                                                [0]=>
+                                                                                object(Stagehand_PHP_ParserYYToken)#48 (2) {
+                                                                                  ["_name:private"]=>
+                                                                                  string(10) "r_variable"
+                                                                                  ["_values:private"]=>
+                                                                                  array(1) {
+                                                                                    [0]=>
+                                                                                    object(Stagehand_PHP_ParserYYToken)#47 (2) {
+                                                                                      ["_name:private"]=>
+                                                                                      string(8) "variable"
+                                                                                      ["_values:private"]=>
+                                                                                      array(1) {
+                                                                                        [0]=>
+                                                                                        object(Stagehand_PHP_ParserYYToken)#46 (2) {
+                                                                                          ["_name:private"]=>
+                                                                                          string(33) "base_variable_with_function_calls"
+                                                                                          ["_values:private"]=>
+                                                                                          array(1) {
+                                                                                            [0]=>
+                                                                                            object(Stagehand_PHP_ParserYYToken)#45 (2) {
+                                                                                              ["_name:private"]=>
+                                                                                              string(13) "base_variable"
+                                                                                              ["_values:private"]=>
+                                                                                              array(1) {
+                                                                                                [0]=>
+                                                                                                object(Stagehand_PHP_ParserYYToken)#44 (2) {
+                                                                                                  ["_name:private"]=>
+                                                                                                  string(18) "reference_variable"
+                                                                                                  ["_values:private"]=>
+                                                                                                  array(1) {
+                                                                                                    [0]=>
+                                                                                                    object(Stagehand_PHP_ParserYYToken)#43 (2) {
+                                                                                                      ["_name:private"]=>
+                                                                                                      string(17) "compound_variable"
+                                                                                                      ["_values:private"]=>
+                                                                                                      array(1) {
+                                                                                                        [0]=>
+                                                                                                        string(2) "$a"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                            [1]=>
+                                                                            string(1) "+"
+                                                                            [2]=>
+                                                                            object(Stagehand_PHP_ParserYYToken)#56 (2) {
+                                                                              ["_name:private"]=>
+                                                                              string(4) "expr"
+                                                                              ["_values:private"]=>
+                                                                              array(1) {
+                                                                                [0]=>
+                                                                                object(Stagehand_PHP_ParserYYToken)#55 (2) {
+                                                                                  ["_name:private"]=>
+                                                                                  string(10) "r_variable"
+                                                                                  ["_values:private"]=>
+                                                                                  array(1) {
+                                                                                    [0]=>
+                                                                                    object(Stagehand_PHP_ParserYYToken)#54 (2) {
+                                                                                      ["_name:private"]=>
+                                                                                      string(8) "variable"
+                                                                                      ["_values:private"]=>
+                                                                                      array(1) {
+                                                                                        [0]=>
+                                                                                        object(Stagehand_PHP_ParserYYToken)#53 (2) {
+                                                                                          ["_name:private"]=>
+                                                                                          string(33) "base_variable_with_function_calls"
+                                                                                          ["_values:private"]=>
+                                                                                          array(1) {
+                                                                                            [0]=>
+                                                                                            object(Stagehand_PHP_ParserYYToken)#52 (2) {
+                                                                                              ["_name:private"]=>
+                                                                                              string(13) "base_variable"
+                                                                                              ["_values:private"]=>
+                                                                                              array(1) {
+                                                                                                [0]=>
+                                                                                                object(Stagehand_PHP_ParserYYToken)#51 (2) {
+                                                                                                  ["_name:private"]=>
+                                                                                                  string(18) "reference_variable"
+                                                                                                  ["_values:private"]=>
+                                                                                                  array(1) {
+                                                                                                    [0]=>
+                                                                                                    object(Stagehand_PHP_ParserYYToken)#50 (2) {
+                                                                                                      ["_name:private"]=>
+                                                                                                      string(17) "compound_variable"
+                                                                                                      ["_values:private"]=>
+                                                                                                      array(1) {
+                                                                                                        [0]=>
+                                                                                                        string(2) "$b"
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                            [1]=>
+                                                            string(1) ";"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                            [1]=>
+                                            object(Stagehand_PHP_ParserYYToken)#76 (2) {
+                                              ["_name:private"]=>
+                                              string(15) "inner_statement"
+                                              ["_values:private"]=>
+                                              array(1) {
+                                                [0]=>
+                                                object(Stagehand_PHP_ParserYYToken)#75 (2) {
+                                                  ["_name:private"]=>
+                                                  string(9) "statement"
+                                                  ["_values:private"]=>
+                                                  array(1) {
+                                                    [0]=>
+                                                    object(Stagehand_PHP_ParserYYToken)#74 (2) {
+                                                      ["_name:private"]=>
+                                                      string(18) "unticked_statement"
+                                                      ["_values:private"]=>
+                                                      array(2) {
+                                                        [0]=>
+                                                        object(Stagehand_PHP_ParserYYToken)#73 (2) {
+                                                          ["_name:private"]=>
+                                                          string(4) "expr"
+                                                          ["_values:private"]=>
+                                                          array(1) {
+                                                            [0]=>
+                                                            object(Stagehand_PHP_ParserYYToken)#72 (2) {
+                                                              ["_name:private"]=>
+                                                              string(21) "expr_without_variable"
+                                                              ["_values:private"]=>
+                                                              array(2) {
+                                                                [0]=>
+                                                                string(5) "print"
+                                                                [1]=>
+                                                                object(Stagehand_PHP_ParserYYToken)#71 (2) {
+                                                                  ["_name:private"]=>
+                                                                  string(4) "expr"
+                                                                  ["_values:private"]=>
+                                                                  array(1) {
+                                                                    [0]=>
+                                                                    object(Stagehand_PHP_ParserYYToken)#70 (2) {
+                                                                      ["_name:private"]=>
+                                                                      string(10) "r_variable"
+                                                                      ["_values:private"]=>
+                                                                      array(1) {
+                                                                        [0]=>
+                                                                        object(Stagehand_PHP_ParserYYToken)#69 (2) {
+                                                                          ["_name:private"]=>
+                                                                          string(8) "variable"
+                                                                          ["_values:private"]=>
+                                                                          array(1) {
+                                                                            [0]=>
+                                                                            object(Stagehand_PHP_ParserYYToken)#68 (2) {
+                                                                              ["_name:private"]=>
+                                                                              string(33) "base_variable_with_function_calls"
+                                                                              ["_values:private"]=>
+                                                                              array(1) {
+                                                                                [0]=>
+                                                                                object(Stagehand_PHP_ParserYYToken)#67 (2) {
+                                                                                  ["_name:private"]=>
+                                                                                  string(13) "base_variable"
+                                                                                  ["_values:private"]=>
+                                                                                  array(1) {
+                                                                                    [0]=>
+                                                                                    object(Stagehand_PHP_ParserYYToken)#66 (2) {
+                                                                                      ["_name:private"]=>
+                                                                                      string(18) "reference_variable"
+                                                                                      ["_values:private"]=>
+                                                                                      array(1) {
+                                                                                        [0]=>
+                                                                                        object(Stagehand_PHP_ParserYYToken)#65 (2) {
+                                                                                          ["_name:private"]=>
+                                                                                          string(17) "compound_variable"
+                                                                                          ["_values:private"]=>
+                                                                                          array(1) {
+                                                                                            [0]=>
+                                                                                            string(2) "$c"
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                        [1]=>
+                                                        string(1) ";"
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                        [2]=>
+                                        string(1) "}"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                            [1]=>
+                            object(Stagehand_PHP_ParserYYToken)#99 (2) {
+                              ["_name:private"]=>
+                              string(15) "class_statement"
+                              ["_values:private"]=>
+                              array(8) {
+                                [0]=>
+                                object(Stagehand_PHP_ParserYYToken)#83 (2) {
+                                  ["_name:private"]=>
+                                  string(16) "method_modifiers"
+                                  ["_values:private"]=>
+                                  array(1) {
+                                    [0]=>
+                                    object(Stagehand_PHP_ParserYYToken)#82 (2) {
+                                      ["_name:private"]=>
+                                      string(26) "non_empty_member_modifiers"
+                                      ["_values:private"]=>
+                                      array(1) {
+                                        [0]=>
+                                        object(Stagehand_PHP_ParserYYToken)#81 (2) {
+                                          ["_name:private"]=>
+                                          string(15) "member_modifier"
+                                          ["_values:private"]=>
+                                          array(1) {
+                                            [0]=>
+                                            string(6) "public"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                                [1]=>
+                                object(Stagehand_PHP_ParserYYToken)#84 (2) {
+                                  ["_name:private"]=>
+                                  string(8) "function"
+                                  ["_values:private"]=>
+                                  array(1) {
+                                    [0]=>
+                                    string(8) "function"
+                                  }
+                                }
+                                [2]=>
+                                object(Stagehand_PHP_ParserYYToken)#85 (2) {
+                                  ["_name:private"]=>
+                                  string(12) "is_reference"
+                                  ["_values:private"]=>
+                                  array(0) {
+                                  }
+                                }
+                                [3]=>
+                                string(4) "hoge"
+                                [4]=>
+                                string(1) "("
+                                [5]=>
+                                object(Stagehand_PHP_ParserYYToken)#86 (2) {
+                                  ["_name:private"]=>
+                                  string(14) "parameter_list"
+                                  ["_values:private"]=>
+                                  array(0) {
+                                  }
+                                }
+                                [6]=>
+                                string(1) ")"
+                                [7]=>
+                                object(Stagehand_PHP_ParserYYToken)#98 (2) {
+                                  ["_name:private"]=>
+                                  string(11) "method_body"
+                                  ["_values:private"]=>
+                                  array(3) {
+                                    [0]=>
+                                    string(1) "{"
+                                    [1]=>
+                                    object(Stagehand_PHP_ParserYYToken)#97 (2) {
+                                      ["_name:private"]=>
+                                      string(20) "inner_statement_list"
+                                      ["_values:private"]=>
+                                      array(2) {
+                                        [0]=>
+                                        object(Stagehand_PHP_ParserYYToken)#87 (2) {
+                                          ["_name:private"]=>
+                                          string(20) "inner_statement_list"
+                                          ["_values:private"]=>
+                                          array(0) {
+                                          }
+                                        }
+                                        [1]=>
+                                        object(Stagehand_PHP_ParserYYToken)#96 (2) {
+                                          ["_name:private"]=>
+                                          string(15) "inner_statement"
+                                          ["_values:private"]=>
+                                          array(1) {
+                                            [0]=>
+                                            object(Stagehand_PHP_ParserYYToken)#95 (2) {
+                                              ["_name:private"]=>
+                                              string(9) "statement"
+                                              ["_values:private"]=>
+                                              array(1) {
+                                                [0]=>
+                                                object(Stagehand_PHP_ParserYYToken)#94 (2) {
+                                                  ["_name:private"]=>
+                                                  string(18) "unticked_statement"
+                                                  ["_values:private"]=>
+                                                  array(2) {
+                                                    [0]=>
+                                                    object(Stagehand_PHP_ParserYYToken)#93 (2) {
+                                                      ["_name:private"]=>
+                                                      string(4) "expr"
+                                                      ["_values:private"]=>
+                                                      array(1) {
+                                                        [0]=>
+                                                        object(Stagehand_PHP_ParserYYToken)#92 (2) {
+                                                          ["_name:private"]=>
+                                                          string(21) "expr_without_variable"
+                                                          ["_values:private"]=>
+                                                          array(2) {
+                                                            [0]=>
+                                                            string(5) "print"
+                                                            [1]=>
+                                                            object(Stagehand_PHP_ParserYYToken)#91 (2) {
+                                                              ["_name:private"]=>
+                                                              string(4) "expr"
+                                                              ["_values:private"]=>
+                                                              array(1) {
+                                                                [0]=>
+                                                                object(Stagehand_PHP_ParserYYToken)#90 (2) {
+                                                                  ["_name:private"]=>
+                                                                  string(21) "expr_without_variable"
+                                                                  ["_values:private"]=>
+                                                                  array(1) {
+                                                                    [0]=>
+                                                                    object(Stagehand_PHP_ParserYYToken)#89 (2) {
+                                                                      ["_name:private"]=>
+                                                                      string(6) "scalar"
+                                                                      ["_values:private"]=>
+                                                                      array(1) {
+                                                                        [0]=>
+                                                                        object(Stagehand_PHP_ParserYYToken)#88 (2) {
+                                                                          ["_name:private"]=>
+                                                                          string(13) "common_scalar"
+                                                                          ["_values:private"]=>
+                                                                          array(1) {
+                                                                            [0]=>
+                                                                            string(8) ""hoge\n""
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                    [1]=>
+                                                    string(1) ";"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                    [2]=>
+                                    string(1) "}"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                        [6]=>
+                        string(1) "}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        [1]=>
+        object(Stagehand_PHP_ParserYYToken)#115 (2) {
+          ["_name:private"]=>
+          string(13) "top_statement"
+          ["_values:private"]=>
+          array(1) {
+            [0]=>
+            object(Stagehand_PHP_ParserYYToken)#114 (2) {
+              ["_name:private"]=>
+              string(9) "statement"
+              ["_values:private"]=>
+              array(1) {
+                [0]=>
+                object(Stagehand_PHP_ParserYYToken)#113 (2) {
+                  ["_name:private"]=>
+                  string(18) "unticked_statement"
+                  ["_values:private"]=>
+                  array(2) {
+                    [0]=>
+                    object(Stagehand_PHP_ParserYYToken)#112 (2) {
+                      ["_name:private"]=>
+                      string(4) "expr"
+                      ["_values:private"]=>
+                      array(1) {
+                        [0]=>
+                        object(Stagehand_PHP_ParserYYToken)#111 (2) {
+                          ["_name:private"]=>
+                          string(10) "r_variable"
+                          ["_values:private"]=>
+                          array(1) {
+                            [0]=>
+                            object(Stagehand_PHP_ParserYYToken)#110 (2) {
+                              ["_name:private"]=>
+                              string(8) "variable"
+                              ["_values:private"]=>
+                              array(1) {
+                                [0]=>
+                                object(Stagehand_PHP_ParserYYToken)#109 (2) {
+                                  ["_name:private"]=>
+                                  string(33) "base_variable_with_function_calls"
+                                  ["_values:private"]=>
+                                  array(1) {
+                                    [0]=>
+                                    object(Stagehand_PHP_ParserYYToken)#108 (2) {
+                                      ["_name:private"]=>
+                                      string(13) "function_call"
+                                      ["_values:private"]=>
+                                      array(6) {
+                                        [0]=>
+                                        object(Stagehand_PHP_ParserYYToken)#106 (2) {
+                                          ["_name:private"]=>
+                                          string(10) "class_name"
+                                          ["_values:private"]=>
+                                          array(1) {
+                                            [0]=>
+                                            object(Stagehand_PHP_ParserYYToken)#105 (2) {
+                                              ["_name:private"]=>
+                                              string(14) "namespace_name"
+                                              ["_values:private"]=>
+                                              array(1) {
+                                                [0]=>
+                                                string(3) "Foo"
+                                              }
+                                            }
+                                          }
+                                        }
+                                        [1]=>
+                                        string(2) "::"
+                                        [2]=>
+                                        string(4) "hoge"
+                                        [3]=>
+                                        string(1) "("
+                                        [4]=>
+                                        object(Stagehand_PHP_ParserYYToken)#107 (2) {
+                                          ["_name:private"]=>
+                                          string(28) "function_call_parameter_list"
+                                          ["_values:private"]=>
+                                          array(0) {
+                                          }
+                                        }
+                                        [5]=>
+                                        string(1) ")"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                    [1]=>
+                    string(1) ";"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
