@@ -154,798 +154,796 @@
 %% /* Rules */
 
 start:
-		top_statement_list	{ self::filter('start', $$, array($1)); }
+		top_statement_list	{ self::filter('start_1', $$, array($1)); }
 ;
 
 top_statement_list:
-		top_statement_list top_statement	{ self::filter('top_statement_list', $$, array($1, $2)); }
-	|	/* empty */	{ self::filter('top_statement_list', $$, array()); }
+		top_statement_list top_statement	{ self::filter('top_statement_list_1', $$, array($1, $2)); }
+	|	/* empty */	{ self::filter('top_statement_list_2', $$, array()); }
 ;
 
 namespace_name:
-		T_STRING	{ self::filter('namespace_name', $$, array($1)); }
-	|	namespace_name T_NS_SEPARATOR T_STRING	{ self::filter('namespace_name', $$, array($1, $2, $3)); }
+		T_STRING	{ self::filter('namespace_name_1', $$, array($1)); }
+	|	namespace_name T_NS_SEPARATOR T_STRING	{ self::filter('namespace_name_2', $$, array($1, $2, $3)); }
 ;
 
 top_statement:
-		statement	{ self::filter('top_statement', $$, array($1)); }
-	|	function_declaration_statement	{ self::filter('top_statement', $$, array($1)); }
-	|	class_declaration_statement	{ self::filter('top_statement', $$, array($1)); }
-	|	T_HALT_COMPILER '(' ')' ';'	{ self::filter('top_statement', $$, array($1, $2, $3, $4)); }
-	|	T_NAMESPACE namespace_name ';'	{ self::filter('top_statement', $$, array($1, $2, $3)); }
-	|	T_NAMESPACE namespace_name '{' top_statement_list '}'	{ self::filter('top_statement', $$, array($1, $2, $3, $4, $5)); }
-	|	T_NAMESPACE '{' top_statement_list '}'	{ self::filter('top_statement', $$, array($1, $2, $3, $4)); }
-	|	T_USE use_declarations ';'	{ self::filter('top_statement', $$, array($1, $2, $3)); }
-	|	constant_declaration ';'	{ self::filter('top_statement', $$, array($1, $2)); }
+		statement	{ self::filter('top_statement_1', $$, array($1)); }
+	|	function_declaration_statement	{ self::filter('top_statement_2', $$, array($1)); }
+	|	class_declaration_statement	{ self::filter('top_statement_3', $$, array($1)); }
+	|	T_HALT_COMPILER '(' ')' ';'	{ self::filter('top_statement_4', $$, array($1, $2, $3, $4)); }
+	|	T_NAMESPACE namespace_name ';'	{ self::filter('top_statement_5', $$, array($1, $2, $3)); }
+	|	T_NAMESPACE namespace_name '{' top_statement_list '}'	{ self::filter('top_statement_6', $$, array($1, $2, $3, $4, $5)); }
+	|	T_NAMESPACE '{' top_statement_list '}'	{ self::filter('top_statement_7', $$, array($1, $2, $3, $4)); }
+	|	T_USE use_declarations ';'	{ self::filter('top_statement_8', $$, array($1, $2, $3)); }
+	|	constant_declaration ';'	{ self::filter('top_statement_9', $$, array($1, $2)); }
 ;
 
 use_declarations:
-		use_declarations ',' use_declaration	{ self::filter('use_declarations', $$, array($1, $2, $3)); }
-	|	use_declaration	{ self::filter('use_declarations', $$, array($1)); }
+		use_declarations ',' use_declaration	{ self::filter('use_declarations_1', $$, array($1, $2, $3)); }
+	|	use_declaration	{ self::filter('use_declarations_2', $$, array($1)); }
 ;
 
 use_declaration:
-		namespace_name	{ self::filter('use_declaration', $$, array($1)); }
-	|	namespace_name T_AS T_STRING	{ self::filter('use_declaration', $$, array($1, $2, $3)); }
-	|	T_NS_SEPARATOR namespace_name	{ self::filter('use_declaration', $$, array($1, $2)); }
-	|	T_NS_SEPARATOR namespace_name T_AS T_STRING	{ self::filter('use_declaration', $$, array($1, $2, $3, $4)); }
+		namespace_name	{ self::filter('use_declaration_1', $$, array($1)); }
+	|	namespace_name T_AS T_STRING	{ self::filter('use_declaration_2', $$, array($1, $2, $3)); }
+	|	T_NS_SEPARATOR namespace_name	{ self::filter('use_declaration_3', $$, array($1, $2)); }
+	|	T_NS_SEPARATOR namespace_name T_AS T_STRING	{ self::filter('use_declaration_4', $$, array($1, $2, $3, $4)); }
 ;
 
 constant_declaration:
-		constant_declaration ',' T_STRING '=' static_scalar	{ self::filter('constant_declaration', $$, array($1, $2, $3, $4, $5)); }
-	|	T_CONST T_STRING '=' static_scalar	{ self::filter('constant_declaration', $$, array($1, $2, $3, $4)); }
+		constant_declaration ',' T_STRING '=' static_scalar	{ self::filter('constant_declaration_1', $$, array($1, $2, $3, $4, $5)); }
+	|	T_CONST T_STRING '=' static_scalar	{ self::filter('constant_declaration_2', $$, array($1, $2, $3, $4)); }
 ;
 
 inner_statement_list:
-		inner_statement_list inner_statement	{ self::filter('inner_statement_list', $$, array($1, $2)); }
-	|	/* empty */	{ self::filter('inner_statement_list', $$, array()); }
+		inner_statement_list inner_statement	{ self::filter('inner_statement_list_1', $$, array($1, $2)); }
+	|	/* empty */	{ self::filter('inner_statement_list_2', $$, array()); }
 ;
 
 
 inner_statement:
-		statement	{ self::filter('inner_statement', $$, array($1)); }
-	|	function_declaration_statement	{ self::filter('inner_statement', $$, array($1)); }
-	|	class_declaration_statement	{ self::filter('inner_statement', $$, array($1)); }
-	|	T_HALT_COMPILER '(' ')' ';'	{ self::filter('inner_statement', $$, array($1, $2, $3, $4)); }
+		statement	{ self::filter('inner_statement_1', $$, array($1)); }
+	|	function_declaration_statement	{ self::filter('inner_statement_2', $$, array($1)); }
+	|	class_declaration_statement	{ self::filter('inner_statement_3', $$, array($1)); }
+	|	T_HALT_COMPILER '(' ')' ';'	{ self::filter('inner_statement_4', $$, array($1, $2, $3, $4)); }
 ;
 
 
 statement:
-		unticked_statement	{ self::filter('statement', $$, array($1)); }
-	|	T_STRING ':'	{ self::filter('statement', $$, array($1, $2)); }
+		unticked_statement	{ self::filter('statement_1', $$, array($1)); }
+	|	T_STRING ':'	{ self::filter('statement_2', $$, array($1, $2)); }
 ;
 
 unticked_statement:
-		'{' inner_statement_list '}'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_IF '(' expr ')' statement elseif_list else_single	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5, $6, $7)); }
-	|	T_IF '(' expr ')' ':' inner_statement_list new_elseif_list new_else_single T_ENDIF ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)); }
-	|	T_WHILE '(' expr ')' while_statement	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5)); }
-	|	T_DO statement T_WHILE '(' expr ')' ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5, $6, $7)); }
-	|	T_FOR '(' for_expr ';' for_expr ';' for_expr ')' for_statement	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9)); }
-	|	T_SWITCH '(' expr ')' switch_case_list	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5)); }
-	|	T_BREAK ';'	{ self::filter('unticked_statement', $$, array($1, $2)); }
-	|	T_BREAK expr ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_CONTINUE ';'	{ self::filter('unticked_statement', $$, array($1, $2)); }
-	|	T_CONTINUE expr ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_RETURN ';'	{ self::filter('unticked_statement', $$, array($1, $2)); }
-	|	T_RETURN expr_without_variable ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_RETURN variable ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_GLOBAL global_var_list ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_STATIC static_var_list ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_ECHO echo_expr_list ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_INLINE_HTML	{ self::filter('unticked_statement', $$, array($1)); }
-	|	expr ';'	{ self::filter('unticked_statement', $$, array($1, $2)); }
-	|	T_UNSET '(' unset_variables ')' ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5)); }
-	|	T_FOREACH '(' variable T_AS foreach_variable foreach_optional_arg ')' foreach_statement	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
-	|	T_FOREACH '(' expr_without_variable T_AS variable foreach_optional_arg ')' foreach_statement	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
-	|	T_DECLARE '(' declare_list ')' declare_statement	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5)); }
-	|	';' /* empty statement */	{ self::filter('unticked_statement', $$, array($1)); }
-	|	T_TRY '{' inner_statement_list '}' T_CATCH '(' fully_qualified_class_name T_VARIABLE ')' '{' inner_statement_list '}' additional_catches	{ self::filter('unticked_statement', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)); }
-	|	T_THROW expr ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
-	|	T_GOTO T_STRING ';'	{ self::filter('unticked_statement', $$, array($1, $2, $3)); }
+		'{' inner_statement_list '}'	{ self::filter('unticked_statement_1', $$, array($1, $2, $3)); }
+	|	T_IF '(' expr ')' statement elseif_list else_single	{ self::filter('unticked_statement_2', $$, array($1, $2, $3, $4, $5, $6, $7)); }
+	|	T_IF '(' expr ')' ':' inner_statement_list new_elseif_list new_else_single T_ENDIF ';'	{ self::filter('unticked_statement_3', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)); }
+	|	T_WHILE '(' expr ')' while_statement	{ self::filter('unticked_statement_4', $$, array($1, $2, $3, $4, $5)); }
+	|	T_DO statement T_WHILE '(' expr ')' ';'	{ self::filter('unticked_statement_5', $$, array($1, $2, $3, $4, $5, $6, $7)); }
+	|	T_FOR '(' for_expr ';' for_expr ';' for_expr ')' for_statement	{ self::filter('unticked_statement_6', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9)); }
+	|	T_SWITCH '(' expr ')' switch_case_list	{ self::filter('unticked_statement_7', $$, array($1, $2, $3, $4, $5)); }
+	|	T_BREAK ';'	{ self::filter('unticked_statement_8', $$, array($1, $2)); }
+	|	T_BREAK expr ';'	{ self::filter('unticked_statement_9', $$, array($1, $2, $3)); }
+	|	T_CONTINUE ';'	{ self::filter('unticked_statement_10', $$, array($1, $2)); }
+	|	T_CONTINUE expr ';'	{ self::filter('unticked_statement_11', $$, array($1, $2, $3)); }
+	|	T_RETURN ';'	{ self::filter('unticked_statement_12', $$, array($1, $2)); }
+	|	T_RETURN expr_without_variable ';'	{ self::filter('unticked_statement_13', $$, array($1, $2, $3)); }
+	|	T_RETURN variable ';'	{ self::filter('unticked_statement_14', $$, array($1, $2, $3)); }
+	|	T_GLOBAL global_var_list ';'	{ self::filter('unticked_statement_15', $$, array($1, $2, $3)); }
+	|	T_STATIC static_var_list ';'	{ self::filter('unticked_statement_16', $$, array($1, $2, $3)); }
+	|	T_ECHO echo_expr_list ';'	{ self::filter('unticked_statement_17', $$, array($1, $2, $3)); }
+	|	T_INLINE_HTML	{ self::filter('unticked_statement_18', $$, array($1)); }
+	|	expr ';'	{ self::filter('unticked_statement_19', $$, array($1, $2)); }
+	|	T_UNSET '(' unset_variables ')' ';'	{ self::filter('unticked_statement_20', $$, array($1, $2, $3, $4, $5)); }
+	|	T_FOREACH '(' variable T_AS foreach_variable foreach_optional_arg ')' foreach_statement	{ self::filter('unticked_statement_21', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
+	|	T_FOREACH '(' expr_without_variable T_AS variable foreach_optional_arg ')' foreach_statement	{ self::filter('unticked_statement_22', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
+	|	T_DECLARE '(' declare_list ')' declare_statement	{ self::filter('unticked_statement_23', $$, array($1, $2, $3, $4, $5)); }
+	|	';' /* empty statement */	{ self::filter('unticked_statement_24', $$, array($1)); }
+	|	T_TRY '{' inner_statement_list '}' T_CATCH '(' fully_qualified_class_name T_VARIABLE ')' '{' inner_statement_list '}' additional_catches	{ self::filter('unticked_statement_25', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)); }
+	|	T_THROW expr ';'	{ self::filter('unticked_statement_26', $$, array($1, $2, $3)); }
+	|	T_GOTO T_STRING ';'	{ self::filter('unticked_statement_27', $$, array($1, $2, $3)); }
 ;
 
 
 additional_catches:
-		non_empty_additional_catches	{ self::filter('additional_catches', $$, array($1)); }
-	|	/* empty */	{ self::filter('additional_catches', $$, array()); }
+		non_empty_additional_catches	{ self::filter('additional_catches_1', $$, array($1)); }
+	|	/* empty */	{ self::filter('additional_catches_2', $$, array()); }
 ;
 
 non_empty_additional_catches:
-		additional_catch	{ self::filter('non_empty_additional_catches', $$, array($1)); }
-	|	non_empty_additional_catches additional_catch	{ self::filter('non_empty_additional_catches', $$, array($1, $2)); }
+		additional_catch	{ self::filter('non_empty_additional_catches_1', $$, array($1)); }
+	|	non_empty_additional_catches additional_catch	{ self::filter('non_empty_additional_catches_2', $$, array($1, $2)); }
 ;
 
 
 additional_catch:
-		T_CATCH '(' fully_qualified_class_name T_VARIABLE ')' '{' inner_statement_list '}'	{ self::filter('additional_catch', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
+		T_CATCH '(' fully_qualified_class_name T_VARIABLE ')' '{' inner_statement_list '}'	{ self::filter('additional_catch_1', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
 ;
 
 
 unset_variables:
-		unset_variable	{ self::filter('unset_variables', $$, array($1)); }
-	|	unset_variables ',' unset_variable	{ self::filter('unset_variables', $$, array($1, $2, $3)); }
+		unset_variable	{ self::filter('unset_variables_1', $$, array($1)); }
+	|	unset_variables ',' unset_variable	{ self::filter('unset_variables_2', $$, array($1, $2, $3)); }
 ;
 
 unset_variable:
-		variable	{ self::filter('unset_variable', $$, array($1)); }
+		variable	{ self::filter('unset_variable_1', $$, array($1)); }
 ;
 
 function_declaration_statement:
-		unticked_function_declaration_statement	{ self::filter('function_declaration_statement', $$, array($1)); }
+		unticked_function_declaration_statement	{ self::filter('function_declaration_statement_1', $$, array($1)); }
 ;
 
 class_declaration_statement:
-		unticked_class_declaration_statement	{ self::filter('class_declaration_statement', $$, array($1)); }
+		unticked_class_declaration_statement	{ self::filter('class_declaration_statement_1', $$, array($1)); }
 ;
 
 
 is_reference:
-		/* empty */	{ self::filter('is_reference', $$, array()); }
-	|	'&'	{ self::filter('is_reference', $$, array($1)); }
+		/* empty */	{ self::filter('is_reference_1', $$, array()); }
+	|	'&'	{ self::filter('is_reference_2', $$, array($1)); }
 ;
 
 
 unticked_function_declaration_statement:
-		function is_reference T_STRING '(' parameter_list ')' '{' inner_statement_list '}'	{ self::filter('unticked_function_declaration_statement', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9)); }
+		function is_reference T_STRING '(' parameter_list ')' '{' inner_statement_list '}'	{ self::filter('unticked_function_declaration_statement_1', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9)); }
 ;
 
 unticked_class_declaration_statement:
-		class_entry_type T_STRING extends_from implements_list '{' class_statement_list '}'	{ self::filter('unticked_class_declaration_statement', $$, array($1, $2, $3, $4, $5, $6, $7)); }
-	|	interface_entry T_STRING interface_extends_list '{' class_statement_list '}'	{ self::filter('unticked_class_declaration_statement', $$, array($1, $2, $3, $4, $5, $6)); }
+		class_entry_type T_STRING extends_from implements_list '{' class_statement_list '}'	{ self::filter('unticked_class_declaration_statement_1', $$, array($1, $2, $3, $4, $5, $6, $7)); }
+	|	interface_entry T_STRING interface_extends_list '{' class_statement_list '}'	{ self::filter('unticked_class_declaration_statement_2', $$, array($1, $2, $3, $4, $5, $6)); }
 ;
 
 
 class_entry_type:
-		T_CLASS	{ self::filter('class_entry_type', $$, array($1)); }
-	|	T_ABSTRACT T_CLASS	{ self::filter('class_entry_type', $$, array($1, $2)); }
-	|	T_FINAL T_CLASS	{ self::filter('class_entry_type', $$, array($1, $2)); }
+		T_CLASS	{ self::filter('class_entry_type_1', $$, array($1)); }
+	|	T_ABSTRACT T_CLASS	{ self::filter('class_entry_type_2', $$, array($1, $2)); }
+	|	T_FINAL T_CLASS	{ self::filter('class_entry_type_3', $$, array($1, $2)); }
 ;
 
 extends_from:
-		/* empty */	{ self::filter('extends_from', $$, array()); }
-	|	T_EXTENDS fully_qualified_class_name	{ self::filter('extends_from', $$, array($1, $2)); }
+		/* empty */	{ self::filter('extends_from_1', $$, array()); }
+	|	T_EXTENDS fully_qualified_class_name	{ self::filter('extends_from_2', $$, array($1, $2)); }
 ;
 
 interface_entry:
-		T_INTERFACE	{ self::filter('interface_entry', $$, array($1)); }
+		T_INTERFACE	{ self::filter('interface_entry_1', $$, array($1)); }
 ;
 
 interface_extends_list:
-		/* empty */	{ self::filter('interface_extends_list', $$, array()); }
-	|	T_EXTENDS interface_list	{ self::filter('interface_extends_list', $$, array($1, $2)); }
+		/* empty */	{ self::filter('interface_extends_list_1', $$, array()); }
+	|	T_EXTENDS interface_list	{ self::filter('interface_extends_list_2', $$, array($1, $2)); }
 ;
 
 implements_list:
-		/* empty */	{ self::filter('implements_list', $$, array()); }
-	|	T_IMPLEMENTS interface_list	{ self::filter('implements_list', $$, array($1, $2)); }
+		/* empty */	{ self::filter('implements_list_1', $$, array()); }
+	|	T_IMPLEMENTS interface_list	{ self::filter('implements_list_2', $$, array($1, $2)); }
 ;
 
 interface_list:
-		fully_qualified_class_name	{ self::filter('interface_list', $$, array($1)); }
-	|	interface_list ',' fully_qualified_class_name	{ self::filter('interface_list', $$, array($1, $2, $3)); }
+		fully_qualified_class_name	{ self::filter('interface_list_1', $$, array($1)); }
+	|	interface_list ',' fully_qualified_class_name	{ self::filter('interface_list_2', $$, array($1, $2, $3)); }
 ;
 
 foreach_optional_arg:
-		/* empty */	{ self::filter('foreach_optional_arg', $$, array()); }
-	|	T_DOUBLE_ARROW foreach_variable	{ self::filter('foreach_optional_arg', $$, array($1, $2)); }
+		/* empty */	{ self::filter('foreach_optional_arg_1', $$, array()); }
+	|	T_DOUBLE_ARROW foreach_variable	{ self::filter('foreach_optional_arg_2', $$, array($1, $2)); }
 ;
 
 
 foreach_variable:
-		variable	{ self::filter('foreach_variable', $$, array($1)); }
-	|	'&' variable	{ self::filter('foreach_variable', $$, array($1, $2)); }
+		variable	{ self::filter('foreach_variable_1', $$, array($1)); }
+	|	'&' variable	{ self::filter('foreach_variable_2', $$, array($1, $2)); }
 ;
 
 for_statement:
-		statement	{ self::filter('for_statement', $$, array($1)); }
-	|	':' inner_statement_list T_ENDFOR ';'	{ self::filter('for_statement', $$, array($1, $2, $3, $4)); }
+		statement	{ self::filter('for_statement_1', $$, array($1)); }
+	|	':' inner_statement_list T_ENDFOR ';'	{ self::filter('for_statement_2', $$, array($1, $2, $3, $4)); }
 ;
 
 
 foreach_statement:
-		statement	{ self::filter('foreach_statement', $$, array($1)); }
-	|	':' inner_statement_list T_ENDFOREACH ';'	{ self::filter('foreach_statement', $$, array($1, $2, $3, $4)); }
+		statement	{ self::filter('foreach_statement_1', $$, array($1)); }
+	|	':' inner_statement_list T_ENDFOREACH ';'	{ self::filter('foreach_statement_2', $$, array($1, $2, $3, $4)); }
 ;
 
 
 declare_statement:
-		statement	{ self::filter('declare_statement', $$, array($1)); }
-	|	':' inner_statement_list T_ENDDECLARE ';'	{ self::filter('declare_statement', $$, array($1, $2, $3, $4)); }
+		statement	{ self::filter('declare_statement_1', $$, array($1)); }
+	|	':' inner_statement_list T_ENDDECLARE ';'	{ self::filter('declare_statement_2', $$, array($1, $2, $3, $4)); }
 ;
 
 
 declare_list:
-		T_STRING '=' static_scalar	{ self::filter('declare_list', $$, array($1, $2, $3)); }
-	|	declare_list ',' T_STRING '=' static_scalar	{ self::filter('declare_list', $$, array($1, $2, $3, $4, $5)); }
+		T_STRING '=' static_scalar	{ self::filter('declare_list_1', $$, array($1, $2, $3)); }
+	|	declare_list ',' T_STRING '=' static_scalar	{ self::filter('declare_list_2', $$, array($1, $2, $3, $4, $5)); }
 ;
 
 
 switch_case_list:
-		'{' case_list '}'	{ self::filter('switch_case_list', $$, array($1, $2, $3)); }
-	|	'{' ';' case_list '}'	{ self::filter('switch_case_list', $$, array($1, $2, $3, $4)); }
-	|	':' case_list T_ENDSWITCH ';'	{ self::filter('switch_case_list', $$, array($1, $2, $3, $4)); }
-	|	':' ';' case_list T_ENDSWITCH ';'	{ self::filter('switch_case_list', $$, array($1, $2, $3, $4, $5)); }
+		'{' case_list '}'	{ self::filter('switch_case_list_1', $$, array($1, $2, $3)); }
+	|	'{' ';' case_list '}'	{ self::filter('switch_case_list_2', $$, array($1, $2, $3, $4)); }
+	|	':' case_list T_ENDSWITCH ';'	{ self::filter('switch_case_list_3', $$, array($1, $2, $3, $4)); }
+	|	':' ';' case_list T_ENDSWITCH ';'	{ self::filter('switch_case_list_4', $$, array($1, $2, $3, $4, $5)); }
 ;
 
 
 case_list:
-		/* empty */	{ self::filter('case_list', $$, array()); }
-	|	case_list T_CASE expr case_separator inner_statement_list	{ self::filter('case_list', $$, array($1, $2, $3, $4, $5)); }
-	|	case_list T_DEFAULT case_separator inner_statement_list	{ self::filter('case_list', $$, array($1, $2, $3, $4)); }
+		/* empty */	{ self::filter('case_list_1', $$, array()); }
+	|	case_list T_CASE expr case_separator inner_statement_list	{ self::filter('case_list_2', $$, array($1, $2, $3, $4, $5)); }
+	|	case_list T_DEFAULT case_separator inner_statement_list	{ self::filter('case_list_3', $$, array($1, $2, $3, $4)); }
 ;
 
 
 case_separator:
-		':'	{ self::filter('case_separator', $$, array($1)); }
-	|	';'	{ self::filter('case_separator', $$, array($1)); }
+		':'	{ self::filter('case_separator_1', $$, array($1)); }
+	|	';'	{ self::filter('case_separator_2', $$, array($1)); }
 ;
 
 
 while_statement:
-		statement	{ self::filter('while_statement', $$, array($1)); }
-	|	':' inner_statement_list T_ENDWHILE ';'	{ self::filter('while_statement', $$, array($1, $2, $3, $4)); }
+		statement	{ self::filter('while_statement_1', $$, array($1)); }
+	|	':' inner_statement_list T_ENDWHILE ';'	{ self::filter('while_statement_2', $$, array($1, $2, $3, $4)); }
 ;
 
 
 
 elseif_list:
-		/* empty */	{ self::filter('elseif_list', $$, array()); }
-	|	elseif_list T_ELSEIF '(' expr ')' statement	{ self::filter('elseif_list', $$, array($1, $2, $3, $4, $5, $6)); }
+		/* empty */	{ self::filter('elseif_list_1', $$, array()); }
+	|	elseif_list T_ELSEIF '(' expr ')' statement	{ self::filter('elseif_list_2', $$, array($1, $2, $3, $4, $5, $6)); }
 ;
 
 
 new_elseif_list:
-		/* empty */	{ self::filter('new_elseif_list', $$, array()); }
-	|	new_elseif_list T_ELSEIF '(' expr ')' ':' inner_statement_list	{ self::filter('new_elseif_list', $$, array($1, $2, $3, $4, $5, $6, $7)); }
+		/* empty */	{ self::filter('new_elseif_list_1', $$, array()); }
+	|	new_elseif_list T_ELSEIF '(' expr ')' ':' inner_statement_list	{ self::filter('new_elseif_list_2', $$, array($1, $2, $3, $4, $5, $6, $7)); }
 ;
 
 
 else_single:
-		/* empty */	{ self::filter('else_single', $$, array()); }
-	|	T_ELSE statement	{ self::filter('else_single', $$, array($1, $2)); }
+		/* empty */	{ self::filter('else_single_1', $$, array()); }
+	|	T_ELSE statement	{ self::filter('else_single_2', $$, array($1, $2)); }
 ;
 
 
 new_else_single:
-		/* empty */	{ self::filter('new_else_single', $$, array()); }
-	|	T_ELSE ':' inner_statement_list	{ self::filter('new_else_single', $$, array($1, $2, $3)); }
+		/* empty */	{ self::filter('new_else_single_1', $$, array()); }
+	|	T_ELSE ':' inner_statement_list	{ self::filter('new_else_single_2', $$, array($1, $2, $3)); }
 ;
 
 
 parameter_list:
-		non_empty_parameter_list	{ self::filter('parameter_list', $$, array($1)); }
-	|	/* empty */	{ self::filter('parameter_list', $$, array()); }
+		non_empty_parameter_list	{ self::filter('parameter_list_1', $$, array($1)); }
+	|	/* empty */	{ self::filter('parameter_list_2', $$, array()); }
 ;
 
 
 non_empty_parameter_list:
-		optional_class_type T_VARIABLE	{ self::filter('non_empty_parameter_list', $$, array($1, $2)); }
-	|	optional_class_type '&' T_VARIABLE	{ self::filter('non_empty_parameter_list', $$, array($1, $2, $3)); }
-	|	optional_class_type '&' T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list', $$, array($1, $2, $3, $4, $5)); }
-	|	optional_class_type T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list', $$, array($1, $2, $3, $4)); }
-	|	non_empty_parameter_list ',' optional_class_type T_VARIABLE	{ self::filter('non_empty_parameter_list', $$, array($1, $2, $3, $4)); }
-	|	non_empty_parameter_list ',' optional_class_type '&' T_VARIABLE	{ self::filter('non_empty_parameter_list', $$, array($1, $2, $3, $4, $5)); }
-	|	non_empty_parameter_list ',' optional_class_type '&' T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list', $$, array($1, $2, $3, $4, $5, $6, $7)); }
-	|	non_empty_parameter_list ',' optional_class_type T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list', $$, array($1, $2, $3, $4, $5, $6)); }
+		optional_class_type T_VARIABLE	{ self::filter('non_empty_parameter_list_1', $$, array($1, $2)); }
+	|	optional_class_type '&' T_VARIABLE	{ self::filter('non_empty_parameter_list_2', $$, array($1, $2, $3)); }
+	|	optional_class_type '&' T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list_3', $$, array($1, $2, $3, $4, $5)); }
+	|	optional_class_type T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list_4', $$, array($1, $2, $3, $4)); }
+	|	non_empty_parameter_list ',' optional_class_type T_VARIABLE	{ self::filter('non_empty_parameter_list_5', $$, array($1, $2, $3, $4)); }
+	|	non_empty_parameter_list ',' optional_class_type '&' T_VARIABLE	{ self::filter('non_empty_parameter_list_6', $$, array($1, $2, $3, $4, $5)); }
+	|	non_empty_parameter_list ',' optional_class_type '&' T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list_7', $$, array($1, $2, $3, $4, $5, $6, $7)); }
+	|	non_empty_parameter_list ',' optional_class_type T_VARIABLE '=' static_scalar	{ self::filter('non_empty_parameter_list_8', $$, array($1, $2, $3, $4, $5, $6)); }
 ;
 
 
 optional_class_type:
-		/* empty */	{ self::filter('optional_class_type', $$, array()); }
-	|	fully_qualified_class_name	{ self::filter('optional_class_type', $$, array($1)); }
-	|	T_ARRAY	{ self::filter('optional_class_type', $$, array($1)); }
+		/* empty */	{ self::filter('optional_class_type_1', $$, array()); }
+	|	fully_qualified_class_name	{ self::filter('optional_class_type_2', $$, array($1)); }
+	|	T_ARRAY	{ self::filter('optional_class_type_3', $$, array($1)); }
 ;
 
 
 function_call_parameter_list:
-		non_empty_function_call_parameter_list	{ self::filter('function_call_parameter_list', $$, array($1)); }
-	|	/* empty */	{ self::filter('function_call_parameter_list', $$, array()); }
+		non_empty_function_call_parameter_list	{ self::filter('function_call_parameter_list_1', $$, array($1)); }
+	|	/* empty */	{ self::filter('function_call_parameter_list_2', $$, array()); }
 ;
 
 
 non_empty_function_call_parameter_list:
-		expr_without_variable	{ self::filter('non_empty_function_call_parameter_list', $$, array($1)); }
-	|	variable	{ self::filter('non_empty_function_call_parameter_list', $$, array($1)); }
-	|	'&' w_variable	{ self::filter('non_empty_function_call_parameter_list', $$, array($1, $2)); }
-	|	non_empty_function_call_parameter_list ',' expr_without_variable	{ self::filter('non_empty_function_call_parameter_list', $$, array($1, $2, $3)); }
-	|	non_empty_function_call_parameter_list ',' variable	{ self::filter('non_empty_function_call_parameter_list', $$, array($1, $2, $3)); }
-	|	non_empty_function_call_parameter_list ',' '&' w_variable	{ self::filter('non_empty_function_call_parameter_list', $$, array($1, $2, $3, $4)); }
+		expr_without_variable	{ self::filter('non_empty_function_call_parameter_list_1', $$, array($1)); }
+	|	variable	{ self::filter('non_empty_function_call_parameter_list_2', $$, array($1)); }
+	|	'&' w_variable	{ self::filter('non_empty_function_call_parameter_list_3', $$, array($1, $2)); }
+	|	non_empty_function_call_parameter_list ',' expr_without_variable	{ self::filter('non_empty_function_call_parameter_list_4', $$, array($1, $2, $3)); }
+	|	non_empty_function_call_parameter_list ',' variable	{ self::filter('non_empty_function_call_parameter_list_5', $$, array($1, $2, $3)); }
+	|	non_empty_function_call_parameter_list ',' '&' w_variable	{ self::filter('non_empty_function_call_parameter_list_6', $$, array($1, $2, $3, $4)); }
 ;
 
 global_var_list:
-		global_var_list ',' global_var	{ self::filter('global_var_list', $$, array($1, $2, $3)); }
-	|	global_var	{ self::filter('global_var_list', $$, array($1)); }
+		global_var_list ',' global_var	{ self::filter('global_var_list_1', $$, array($1, $2, $3)); }
+	|	global_var	{ self::filter('global_var_list_2', $$, array($1)); }
 ;
 
 
 global_var:
-		T_VARIABLE	{ self::filter('global_var', $$, array($1)); }
-	|	'$' r_variable	{ self::filter('global_var', $$, array($1, $2)); }
-	|	'$' '{' expr '}'	{ self::filter('global_var', $$, array($1, $2, $3, $4)); }
+		T_VARIABLE	{ self::filter('global_var_1', $$, array($1)); }
+	|	'$' r_variable	{ self::filter('global_var_2', $$, array($1, $2)); }
+	|	'$' '{' expr '}'	{ self::filter('global_var_3', $$, array($1, $2, $3, $4)); }
 ;
 
 
 static_var_list:
-		static_var_list ',' T_VARIABLE	{ self::filter('static_var_list', $$, array($1, $2, $3)); }
-	|	static_var_list ',' T_VARIABLE '=' static_scalar	{ self::filter('static_var_list', $$, array($1, $2, $3, $4, $5)); }
-	|	T_VARIABLE	{ self::filter('static_var_list', $$, array($1)); }
-	|	T_VARIABLE '=' static_scalar	{ self::filter('static_var_list', $$, array($1, $2, $3)); }
+		static_var_list ',' T_VARIABLE	{ self::filter('static_var_list_1', $$, array($1, $2, $3)); }
+	|	static_var_list ',' T_VARIABLE '=' static_scalar	{ self::filter('static_var_list_2', $$, array($1, $2, $3, $4, $5)); }
+	|	T_VARIABLE	{ self::filter('static_var_list_3', $$, array($1)); }
+	|	T_VARIABLE '=' static_scalar	{ self::filter('static_var_list_4', $$, array($1, $2, $3)); }
 ;
 
 
 class_statement_list:
-		class_statement_list class_statement	{ self::filter('class_statement_list', $$, array($1, $2)); }
-	|	/* empty */	{ self::filter('class_statement_list', $$, array()); }
+		class_statement_list class_statement	{ self::filter('class_statement_list_1', $$, array($1, $2)); }
+	|	/* empty */	{ self::filter('class_statement_list_2', $$, array()); }
 ;
 
 
 class_statement:
-		variable_modifiers class_variable_declaration ';'	{ self::filter('class_statement', $$, array($1, $2, $3)); }
-	|	class_constant_declaration ';'	{ self::filter('class_statement', $$, array($1, $2)); }
-	|	method_modifiers function is_reference T_STRING '(' parameter_list ')' method_body	{ self::filter('class_statement', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
+		variable_modifiers class_variable_declaration ';'	{ self::filter('class_statement_1', $$, array($1, $2, $3)); }
+	|	class_constant_declaration ';'	{ self::filter('class_statement_2', $$, array($1, $2)); }
+	|	method_modifiers function is_reference T_STRING '(' parameter_list ')' method_body	{ self::filter('class_statement_3', $$, array($1, $2, $3, $4, $5, $6, $7, $8)); }
 ;
 
 
 method_body:
-		';' /* abstract method */	{ self::filter('method_body', $$, array($1)); }
-	|	'{' inner_statement_list '}'	{ self::filter('method_body', $$, array($1, $2, $3)); }
+		';' /* abstract method */	{ self::filter('method_body_1', $$, array($1)); }
+	|	'{' inner_statement_list '}'	{ self::filter('method_body_2', $$, array($1, $2, $3)); }
 ;
 
 variable_modifiers:
-		non_empty_member_modifiers	{ self::filter('variable_modifiers', $$, array($1)); }
-	|	T_VAR	{ self::filter('variable_modifiers', $$, array($1)); }
+		non_empty_member_modifiers	{ self::filter('variable_modifiers_1', $$, array($1)); }
+	|	T_VAR	{ self::filter('variable_modifiers_2', $$, array($1)); }
 ;
 
 method_modifiers:
-		/* empty */	{ self::filter('method_modifiers', $$, array()); }
-	|	non_empty_member_modifiers 	{ self::filter('method_modifiers', $$, array($1)); }
+		/* empty */	{ self::filter('method_modifiers_1', $$, array()); }
+	|	non_empty_member_modifiers	{ self::filter('method_modifiers_2', $$, array($1)); }
 ;
 
 non_empty_member_modifiers:
-		member_modifier	{ self::filter('non_empty_member_modifiers', $$, array($1)); }
-	|	non_empty_member_modifiers member_modifier	{ self::filter('non_empty_member_modifiers', $$, array($1, $2)); }
+		member_modifier	{ self::filter('non_empty_member_modifiers_1', $$, array($1)); }
+	|	non_empty_member_modifiers member_modifier	{ self::filter('non_empty_member_modifiers_2', $$, array($1, $2)); }
 ;
 
 member_modifier:
-		T_PUBLIC	{ self::filter('member_modifier', $$, array($1)); }
-	|	T_PROTECTED	{ self::filter('member_modifier', $$, array($1)); }
-	|	T_PRIVATE	{ self::filter('member_modifier', $$, array($1)); }
-	|	T_STATIC	{ self::filter('member_modifier', $$, array($1)); }
-	|	T_ABSTRACT	{ self::filter('member_modifier', $$, array($1)); }
-	|	T_FINAL	{ self::filter('member_modifier', $$, array($1)); }
+		T_PUBLIC	{ self::filter('member_modifier_1', $$, array($1)); }
+	|	T_PROTECTED	{ self::filter('member_modifier_2', $$, array($1)); }
+	|	T_PRIVATE	{ self::filter('member_modifier_3', $$, array($1)); }
+	|	T_STATIC	{ self::filter('member_modifier_4', $$, array($1)); }
+	|	T_ABSTRACT	{ self::filter('member_modifier_5', $$, array($1)); }
+	|	T_FINAL	{ self::filter('member_modifier_6', $$, array($1)); }
 ;
 
 class_variable_declaration:
-		class_variable_declaration ',' T_VARIABLE	{ self::filter('class_variable_declaration', $$, array($1, $2, $3)); }
-	|	class_variable_declaration ',' T_VARIABLE '=' static_scalar	{ self::filter('class_variable_declaration', $$, array($1, $2, $3, $4, $5)); }
-	|	T_VARIABLE	{ self::filter('class_variable_declaration', $$, array($1)); }
-	|	T_VARIABLE '=' static_scalar	{ self::filter('class_variable_declaration', $$, array($1, $2, $3)); }
+		class_variable_declaration ',' T_VARIABLE	{ self::filter('class_variable_declaration_1', $$, array($1, $2, $3)); }
+	|	class_variable_declaration ',' T_VARIABLE '=' static_scalar	{ self::filter('class_variable_declaration_2', $$, array($1, $2, $3, $4, $5)); }
+	|	T_VARIABLE	{ self::filter('class_variable_declaration_3', $$, array($1)); }
+	|	T_VARIABLE '=' static_scalar	{ self::filter('class_variable_declaration_4', $$, array($1, $2, $3)); }
 ;
 
 class_constant_declaration:
-		class_constant_declaration ',' T_STRING '=' static_scalar	{ self::filter('class_constant_declaration', $$, array($1, $2, $3, $4, $5)); }
-	|	T_CONST T_STRING '=' static_scalar	{ self::filter('class_constant_declaration', $$, array($1, $2, $3, $4)); }
+		class_constant_declaration ',' T_STRING '=' static_scalar	{ self::filter('class_constant_declaration_1', $$, array($1, $2, $3, $4, $5)); }
+	|	T_CONST T_STRING '=' static_scalar	{ self::filter('class_constant_declaration_2', $$, array($1, $2, $3, $4)); }
 ;
 
 echo_expr_list:
-		echo_expr_list ',' expr	{ self::filter('echo_expr_list', $$, array($1, $2, $3)); }
-	|	expr	{ self::filter('echo_expr_list', $$, array($1)); }
+		echo_expr_list ',' expr	{ self::filter('echo_expr_list_1', $$, array($1, $2, $3)); }
+	|	expr	{ self::filter('echo_expr_list_2', $$, array($1)); }
 ;
 
 
 for_expr:
-		/* empty */	{ self::filter('for_expr', $$, array()); }
-	|	non_empty_for_expr	{ self::filter('for_expr', $$, array($1)); }
+		/* empty */	{ self::filter('for_expr_1', $$, array()); }
+	|	non_empty_for_expr	{ self::filter('for_expr_2', $$, array($1)); }
 ;
 
 non_empty_for_expr:
-		non_empty_for_expr ',' expr	{ self::filter('non_empty_for_expr', $$, array($1, $2, $3)); }
-	|	expr	{ self::filter('non_empty_for_expr', $$, array($1)); }
+		non_empty_for_expr ',' expr	{ self::filter('non_empty_for_expr_1', $$, array($1, $2, $3)); }
+	|	expr	{ self::filter('non_empty_for_expr_2', $$, array($1)); }
 ;
 
 expr_without_variable:
-		T_LIST '(' assignment_list ')' '=' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	variable '=' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable '=' '&' variable	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4)); }
-	|	variable '=' '&' T_NEW class_name_reference ctor_arguments	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	T_NEW class_name_reference ctor_arguments	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	T_CLONE expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	variable T_PLUS_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_MINUS_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_MUL_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_DIV_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_CONCAT_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_MOD_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_AND_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_OR_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_XOR_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_SL_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	variable T_SR_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	rw_variable T_INC	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_INC rw_variable	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	rw_variable T_DEC	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_DEC rw_variable	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	expr T_BOOLEAN_OR expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_BOOLEAN_AND expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_LOGICAL_OR expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_LOGICAL_AND expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_LOGICAL_XOR expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '|' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '&' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '^' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '.' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '+' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '-' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '*' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '/' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '%' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_SL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_SR expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	'+' expr %prec T_INC { self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	'-' expr %prec T_INC { self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	'!' expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	'~' expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	expr T_IS_IDENTICAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_IS_NOT_IDENTICAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_IS_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_IS_NOT_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '<' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_IS_SMALLER_OR_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '>' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_IS_GREATER_OR_EQUAL expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr T_INSTANCEOF class_name_reference	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	'(' expr ')'	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	expr '?' expr ':' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4, $5)); }
-	|	expr '?' ':' expr	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4)); }
-	|	internal_functions_in_yacc	{ self::filter('expr_without_variable', $$, array($1)); }
-	|	T_INT_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_DOUBLE_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_STRING_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_UNICODE_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_BINARY_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_ARRAY_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_OBJECT_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_BOOL_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_UNSET_CAST expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	T_EXIT exit_expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	'@' expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	scalar	{ self::filter('expr_without_variable', $$, array($1)); }
-	|	T_ARRAY '(' array_pair_list ')'	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4)); }
-	|	'`' backticks_expr '`'	{ self::filter('expr_without_variable', $$, array($1, $2, $3)); }
-	|	T_PRINT expr	{ self::filter('expr_without_variable', $$, array($1, $2)); }
-	|	function is_reference '(' parameter_list ')' lexical_vars '{' inner_statement_list '}'	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9)); }
-	|	T_STATIC function is_reference '(' parameter_list ')' lexical_vars '{' inner_statement_list '}'	{ self::filter('expr_without_variable', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)); }
+		T_LIST '(' assignment_list ')' '=' expr	{ self::filter('expr_without_variable_1', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	variable '=' expr	{ self::filter('expr_without_variable_2', $$, array($1, $2, $3)); }
+	|	variable '=' '&' variable	{ self::filter('expr_without_variable_3', $$, array($1, $2, $3, $4)); }
+	|	variable '=' '&' T_NEW class_name_reference ctor_arguments	{ self::filter('expr_without_variable_4', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	T_NEW class_name_reference ctor_arguments	{ self::filter('expr_without_variable_5', $$, array($1, $2, $3)); }
+	|	T_CLONE expr	{ self::filter('expr_without_variable_6', $$, array($1, $2)); }
+	|	variable T_PLUS_EQUAL expr	{ self::filter('expr_without_variable_7', $$, array($1, $2, $3)); }
+	|	variable T_MINUS_EQUAL expr	{ self::filter('expr_without_variable_8', $$, array($1, $2, $3)); }
+	|	variable T_MUL_EQUAL expr	{ self::filter('expr_without_variable_9', $$, array($1, $2, $3)); }
+	|	variable T_DIV_EQUAL expr	{ self::filter('expr_without_variable_10', $$, array($1, $2, $3)); }
+	|	variable T_CONCAT_EQUAL expr	{ self::filter('expr_without_variable_11', $$, array($1, $2, $3)); }
+	|	variable T_MOD_EQUAL expr	{ self::filter('expr_without_variable_12', $$, array($1, $2, $3)); }
+	|	variable T_AND_EQUAL expr	{ self::filter('expr_without_variable_13', $$, array($1, $2, $3)); }
+	|	variable T_OR_EQUAL expr	{ self::filter('expr_without_variable_14', $$, array($1, $2, $3)); }
+	|	variable T_XOR_EQUAL expr	{ self::filter('expr_without_variable_15', $$, array($1, $2, $3)); }
+	|	variable T_SL_EQUAL expr	{ self::filter('expr_without_variable_16', $$, array($1, $2, $3)); }
+	|	variable T_SR_EQUAL expr	{ self::filter('expr_without_variable_17', $$, array($1, $2, $3)); }
+	|	rw_variable T_INC	{ self::filter('expr_without_variable_18', $$, array($1, $2)); }
+	|	T_INC rw_variable	{ self::filter('expr_without_variable_19', $$, array($1, $2)); }
+	|	rw_variable T_DEC	{ self::filter('expr_without_variable_20', $$, array($1, $2)); }
+	|	T_DEC rw_variable	{ self::filter('expr_without_variable_21', $$, array($1, $2)); }
+	|	expr T_BOOLEAN_OR expr	{ self::filter('expr_without_variable_22', $$, array($1, $2, $3)); }
+	|	expr T_BOOLEAN_AND expr	{ self::filter('expr_without_variable_23', $$, array($1, $2, $3)); }
+	|	expr T_LOGICAL_OR expr	{ self::filter('expr_without_variable_24', $$, array($1, $2, $3)); }
+	|	expr T_LOGICAL_AND expr	{ self::filter('expr_without_variable_25', $$, array($1, $2, $3)); }
+	|	expr T_LOGICAL_XOR expr	{ self::filter('expr_without_variable_26', $$, array($1, $2, $3)); }
+	|	expr '|' expr	{ self::filter('expr_without_variable_27', $$, array($1, $2, $3)); }
+	|	expr '&' expr	{ self::filter('expr_without_variable_28', $$, array($1, $2, $3)); }
+	|	expr '^' expr	{ self::filter('expr_without_variable_29', $$, array($1, $2, $3)); }
+	|	expr '.' expr	{ self::filter('expr_without_variable_30', $$, array($1, $2, $3)); }
+	|	expr '+' expr	{ self::filter('expr_without_variable_31', $$, array($1, $2, $3)); }
+	|	expr '-' expr	{ self::filter('expr_without_variable_32', $$, array($1, $2, $3)); }
+	|	expr '*' expr	{ self::filter('expr_without_variable_33', $$, array($1, $2, $3)); }
+	|	expr '/' expr	{ self::filter('expr_without_variable_34', $$, array($1, $2, $3)); }
+	|	expr '%' expr	{ self::filter('expr_without_variable_35', $$, array($1, $2, $3)); }
+	|	expr T_SL expr	{ self::filter('expr_without_variable_36', $$, array($1, $2, $3)); }
+	|	expr T_SR expr	{ self::filter('expr_without_variable_37', $$, array($1, $2, $3)); }
+	|	'+' expr %prec T_INC { self::filter('expr_without_variable_38', $$, array($1, $2)); }
+	|	'-' expr %prec T_INC { self::filter('expr_without_variable_39', $$, array($1, $2)); }
+	|	'!' expr	{ self::filter('expr_without_variable_40', $$, array($1, $2)); }
+	|	'~' expr	{ self::filter('expr_without_variable_41', $$, array($1, $2)); }
+	|	expr T_IS_IDENTICAL expr	{ self::filter('expr_without_variable_42', $$, array($1, $2, $3)); }
+	|	expr T_IS_NOT_IDENTICAL expr	{ self::filter('expr_without_variable_43', $$, array($1, $2, $3)); }
+	|	expr T_IS_EQUAL expr	{ self::filter('expr_without_variable_44', $$, array($1, $2, $3)); }
+	|	expr T_IS_NOT_EQUAL expr	{ self::filter('expr_without_variable_45', $$, array($1, $2, $3)); }
+	|	expr '<' expr	{ self::filter('expr_without_variable_46', $$, array($1, $2, $3)); }
+	|	expr T_IS_SMALLER_OR_EQUAL expr	{ self::filter('expr_without_variable_47', $$, array($1, $2, $3)); }
+	|	expr '>' expr	{ self::filter('expr_without_variable_48', $$, array($1, $2, $3)); }
+	|	expr T_IS_GREATER_OR_EQUAL expr	{ self::filter('expr_without_variable_49', $$, array($1, $2, $3)); }
+	|	expr T_INSTANCEOF class_name_reference	{ self::filter('expr_without_variable_50', $$, array($1, $2, $3)); }
+	|	'(' expr ')'	{ self::filter('expr_without_variable_51', $$, array($1, $2, $3)); }
+	|	expr '?' expr ':' expr	{ self::filter('expr_without_variable_52', $$, array($1, $2, $3, $4, $5)); }
+	|	expr '?' ':' expr	{ self::filter('expr_without_variable_53', $$, array($1, $2, $3, $4)); }
+	|	internal_functions_in_yacc	{ self::filter('expr_without_variable_54', $$, array($1)); }
+	|	T_INT_CAST expr	{ self::filter('expr_without_variable_55', $$, array($1, $2)); }
+	|	T_DOUBLE_CAST expr	{ self::filter('expr_without_variable_56', $$, array($1, $2)); }
+	|	T_STRING_CAST expr	{ self::filter('expr_without_variable_57', $$, array($1, $2)); }
+	|	T_UNICODE_CAST expr	{ self::filter('expr_without_variable_58', $$, array($1, $2)); }
+	|	T_BINARY_CAST expr	{ self::filter('expr_without_variable_59', $$, array($1, $2)); }
+	|	T_ARRAY_CAST expr	{ self::filter('expr_without_variable_60', $$, array($1, $2)); }
+	|	T_OBJECT_CAST expr	{ self::filter('expr_without_variable_61', $$, array($1, $2)); }
+	|	T_BOOL_CAST expr	{ self::filter('expr_without_variable_62', $$, array($1, $2)); }
+	|	T_UNSET_CAST expr	{ self::filter('expr_without_variable_63', $$, array($1, $2)); }
+	|	T_EXIT exit_expr	{ self::filter('expr_without_variable_64', $$, array($1, $2)); }
+	|	'@' expr	{ self::filter('expr_without_variable_65', $$, array($1, $2)); }
+	|	scalar	{ self::filter('expr_without_variable_66', $$, array($1)); }
+	|	T_ARRAY '(' array_pair_list ')'	{ self::filter('expr_without_variable_67', $$, array($1, $2, $3, $4)); }
+	|	'`' backticks_expr '`'	{ self::filter('expr_without_variable_68', $$, array($1, $2, $3)); }
+	|	T_PRINT expr	{ self::filter('expr_without_variable_69', $$, array($1, $2)); }
+	|	function is_reference '(' parameter_list ')' lexical_vars '{' inner_statement_list '}'	{ self::filter('expr_without_variable_70', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9)); }
+	|	T_STATIC function is_reference '(' parameter_list ')' lexical_vars '{' inner_statement_list '}'	{ self::filter('expr_without_variable_71', $$, array($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)); }
 ;
 
 function:
-		T_FUNCTION	{ self::filter('function', $$, array($1)); }
+		T_FUNCTION	{ self::filter('function_1', $$, array($1)); }
 ;
 
 lexical_vars:
-		/* empty */	{ self::filter('lexical_vars', $$, array()); }
-	|	T_USE '(' lexical_var_list ')'	{ self::filter('lexical_vars', $$, array($1, $2, $3, $4)); }
+		/* empty */	{ self::filter('lexical_vars_1', $$, array()); }
+	|	T_USE '(' lexical_var_list ')'	{ self::filter('lexical_vars_2', $$, array($1, $2, $3, $4)); }
 ;
 
 lexical_var_list:
-		lexical_var_list ',' T_VARIABLE	{ self::filter('lexical_var_list', $$, array($1, $2, $3)); }
-	|	lexical_var_list ',' '&' T_VARIABLE	{ self::filter('lexical_var_list', $$, array($1, $2, $3, $4)); }
-	|	T_VARIABLE	{ self::filter('lexical_var_list', $$, array($1)); }
-	|	'&' T_VARIABLE	{ self::filter('lexical_var_list', $$, array($1, $2)); }
+		lexical_var_list ',' T_VARIABLE	{ self::filter('lexical_var_list_1', $$, array($1, $2, $3)); }
+	|	lexical_var_list ',' '&' T_VARIABLE	{ self::filter('lexical_var_list_2', $$, array($1, $2, $3, $4)); }
+	|	T_VARIABLE	{ self::filter('lexical_var_list_3', $$, array($1)); }
+	|	'&' T_VARIABLE	{ self::filter('lexical_var_list_4', $$, array($1, $2)); }
 ;
 
 function_call:
-		namespace_name '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4)); }
-	|	T_NAMESPACE T_NS_SEPARATOR namespace_name '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	T_NS_SEPARATOR namespace_name '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4, $5)); }
-	|	class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	variable_without_objects '(' function_call_parameter_list ')'	{ self::filter('function_call', $$, array($1, $2, $3, $4)); }
+		namespace_name '(' function_call_parameter_list ')'	{ self::filter('function_call_1', $$, array($1, $2, $3, $4)); }
+	|	T_NAMESPACE T_NS_SEPARATOR namespace_name '(' function_call_parameter_list ')'	{ self::filter('function_call_2', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	T_NS_SEPARATOR namespace_name '(' function_call_parameter_list ')'	{ self::filter('function_call_3', $$, array($1, $2, $3, $4, $5)); }
+	|	class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING '(' function_call_parameter_list ')'	{ self::filter('function_call_4', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING '(' function_call_parameter_list ')'	{ self::filter('function_call_5', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects '(' function_call_parameter_list ')'	{ self::filter('function_call_6', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects '(' function_call_parameter_list ')'	{ self::filter('function_call_7', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	variable_without_objects '(' function_call_parameter_list ')'	{ self::filter('function_call_8', $$, array($1, $2, $3, $4)); }
 ;
 
 class_name:
-		T_STATIC	{ self::filter('class_name', $$, array($1)); }
-	|	namespace_name	{ self::filter('class_name', $$, array($1)); }
-	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('class_name', $$, array($1, $2, $3)); }
-	|	T_NS_SEPARATOR namespace_name	{ self::filter('class_name', $$, array($1, $2)); }
+		T_STATIC	{ self::filter('class_name_1', $$, array($1)); }
+	|	namespace_name	{ self::filter('class_name_2', $$, array($1)); }
+	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('class_name_3', $$, array($1, $2, $3)); }
+	|	T_NS_SEPARATOR namespace_name	{ self::filter('class_name_4', $$, array($1, $2)); }
 ;
 
 fully_qualified_class_name:
-		namespace_name	{ self::filter('fully_qualified_class_name', $$, array($1)); }
-	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('fully_qualified_class_name', $$, array($1, $2, $3)); }
-	|	T_NS_SEPARATOR namespace_name	{ self::filter('fully_qualified_class_name', $$, array($1, $2)); }
+		namespace_name	{ self::filter('fully_qualified_class_name_1', $$, array($1)); }
+	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('fully_qualified_class_name_2', $$, array($1, $2, $3)); }
+	|	T_NS_SEPARATOR namespace_name	{ self::filter('fully_qualified_class_name_3', $$, array($1, $2)); }
 ;
 
 
 class_name_reference:
-		class_name	{ self::filter('class_name_reference', $$, array($1)); }
-	|	dynamic_class_name_reference	{ self::filter('class_name_reference', $$, array($1)); }
+		class_name	{ self::filter('class_name_reference_1', $$, array($1)); }
+	|	dynamic_class_name_reference	{ self::filter('class_name_reference_2', $$, array($1)); }
 ;
 
 
 dynamic_class_name_reference:
-		base_variable T_OBJECT_OPERATOR object_property dynamic_class_name_variable_properties	{ self::filter('dynamic_class_name_reference', $$, array($1, $2, $3, $4)); }
-	|	base_variable	{ self::filter('dynamic_class_name_reference', $$, array($1)); }
+		base_variable T_OBJECT_OPERATOR object_property dynamic_class_name_variable_properties	{ self::filter('dynamic_class_name_reference_1', $$, array($1, $2, $3, $4)); }
+	|	base_variable	{ self::filter('dynamic_class_name_reference_2', $$, array($1)); }
 ;
 
 
 dynamic_class_name_variable_properties:
-		dynamic_class_name_variable_properties dynamic_class_name_variable_property	{ self::filter('dynamic_class_name_variable_properties', $$, array($1, $2)); }
-	|	/* empty */	{ self::filter('dynamic_class_name_variable_properties', $$, array()); }
+		dynamic_class_name_variable_properties dynamic_class_name_variable_property	{ self::filter('dynamic_class_name_variable_properties_1', $$, array($1, $2)); }
+	|	/* empty */	{ self::filter('dynamic_class_name_variable_properties_2', $$, array()); }
 ;
 
 
 dynamic_class_name_variable_property:
-		T_OBJECT_OPERATOR object_property	{ self::filter('dynamic_class_name_variable_property', $$, array($1, $2)); }
+		T_OBJECT_OPERATOR object_property	{ self::filter('dynamic_class_name_variable_property_1', $$, array($1, $2)); }
 ;
 
 exit_expr:
-		/* empty */	{ self::filter('exit_expr', $$, array()); }
-	|	'(' ')'	{ self::filter('exit_expr', $$, array($1, $2)); }
-	|	'(' expr ')'	{ self::filter('exit_expr', $$, array($1, $2, $3)); }
+		/* empty */	{ self::filter('exit_expr_1', $$, array()); }
+	|	'(' ')'	{ self::filter('exit_expr_2', $$, array($1, $2)); }
+	|	'(' expr ')'	{ self::filter('exit_expr_3', $$, array($1, $2, $3)); }
 ;
 
 backticks_expr:
-		/* empty */	{ self::filter('backticks_expr', $$, array()); }
-	|	T_ENCAPSED_AND_WHITESPACE	{ self::filter('backticks_expr', $$, array($1)); }
-	|	encaps_list	{ self::filter('backticks_expr', $$, array($1)); }
+		/* empty */	{ self::filter('backticks_expr_1', $$, array()); }
+	|	T_ENCAPSED_AND_WHITESPACE	{ self::filter('backticks_expr_2', $$, array($1)); }
+	|	encaps_list	{ self::filter('backticks_expr_3', $$, array($1)); }
 ;
 
 
 ctor_arguments:
-		/* empty */	{ self::filter('ctor_arguments', $$, array()); }
-	|	'(' function_call_parameter_list ')'	{ self::filter('ctor_arguments', $$, array($1, $2, $3)); }
+		/* empty */	{ self::filter('ctor_arguments_1', $$, array()); }
+	|	'(' function_call_parameter_list ')'	{ self::filter('ctor_arguments_2', $$, array($1, $2, $3)); }
 ;
 
 
 common_scalar:
-		T_LNUMBER	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_DNUMBER	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_CONSTANT_ENCAPSED_STRING	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_LINE	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_FILE	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_DIR	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_CLASS_C	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_METHOD_C	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_FUNC_C	{ self::filter('common_scalar', $$, array($1)); }
-	|	T_NS_C	{ self::filter('common_scalar', $$, array($1)); }
-	|	start_heredoc T_ENCAPSED_AND_WHITESPACE T_END_HEREDOC	{ self::filter('common_scalar', $$, array($1, $2, $3)); }
-	|	start_heredoc T_END_HEREDOC { self::filter('common_scalar', $$, array($1, $2)); }
+		T_LNUMBER	{ self::filter('common_scalar_1', $$, array($1)); }
+	|	T_DNUMBER	{ self::filter('common_scalar_2', $$, array($1)); }
+	|	T_CONSTANT_ENCAPSED_STRING	{ self::filter('common_scalar_3', $$, array($1)); }
+	|	T_LINE	{ self::filter('common_scalar_4', $$, array($1)); }
+	|	T_FILE	{ self::filter('common_scalar_5', $$, array($1)); }
+	|	T_DIR	{ self::filter('common_scalar_6', $$, array($1)); }
+	|	T_CLASS_C	{ self::filter('common_scalar_7', $$, array($1)); }
+	|	T_METHOD_C	{ self::filter('common_scalar_8', $$, array($1)); }
+	|	T_FUNC_C	{ self::filter('common_scalar_9', $$, array($1)); }
+	|	T_NS_C	{ self::filter('common_scalar_10', $$, array($1)); }
+	|	start_heredoc T_ENCAPSED_AND_WHITESPACE T_END_HEREDOC	{ self::filter('common_scalar_11', $$, array($1, $2, $3)); }
+	|	start_heredoc T_END_HEREDOC { self::filter('common_scalar_12', $$, array($1, $2)); }
 ;
 
 start_heredoc:
-		T_START_HEREDOC	{ self::filter('start_heredoc', $$, array($1)); }
-	|	T_BINARY_HEREDOC	{ self::filter('start_heredoc', $$, array($1)); }
+		T_START_HEREDOC	{ self::filter('start_heredoc_1', $$, array($1)); }
+	|	T_BINARY_HEREDOC	{ self::filter('start_heredoc_2', $$, array($1)); }
 ;
 
 
 static_scalar: /* compile-time evaluated scalars */
-		common_scalar	{ self::filter('static_scalar', $$, array($1)); }
-	|	namespace_name	{ self::filter('static_scalar', $$, array($1)); }
-	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('static_scalar', $$, array($1, $2, $3)); }
-	|	T_NS_SEPARATOR namespace_name	{ self::filter('static_scalar', $$, array($1, $2)); }
-	|	'+' static_scalar	{ self::filter('static_scalar', $$, array($1, $2)); }
-	|	'-' static_scalar	{ self::filter('static_scalar', $$, array($1, $2)); }
-	|	T_ARRAY '(' static_array_pair_list ')'	{ self::filter('static_scalar', $$, array($1, $2, $3, $4)); }
-	|	static_class_constant	{ self::filter('static_scalar', $$, array($1)); }
+		common_scalar	{ self::filter('static_scalar_1', $$, array($1)); }
+	|	namespace_name	{ self::filter('static_scalar_2', $$, array($1)); }
+	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('static_scalar_3', $$, array($1, $2, $3)); }
+	|	T_NS_SEPARATOR namespace_name	{ self::filter('static_scalar_4', $$, array($1, $2)); }
+	|	'+' static_scalar	{ self::filter('static_scalar_5', $$, array($1, $2)); }
+	|	'-' static_scalar	{ self::filter('static_scalar_6', $$, array($1, $2)); }
+	|	T_ARRAY '(' static_array_pair_list ')'	{ self::filter('static_scalar_7', $$, array($1, $2, $3, $4)); }
+	|	static_class_constant	{ self::filter('static_scalar_8', $$, array($1)); }
 ;
 
 static_class_constant:
-		class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING	{ self::filter('static_class_constant', $$, array($1, $2, $3)); }
+		class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING	{ self::filter('static_class_constant_1', $$, array($1, $2, $3)); }
 ;
 
 scalar:
-		T_STRING_VARNAME	{ self::filter('scalar', $$, array($1)); }
-	|	class_constant	{ self::filter('scalar', $$, array($1)); }
-	|	namespace_name	{ self::filter('scalar', $$, array($1)); }
-	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('scalar', $$, array($1, $2, $3)); }
-	|	T_NS_SEPARATOR namespace_name	{ self::filter('scalar', $$, array($1, $2)); }
-	|	common_scalar	{ self::filter('scalar', $$, array($1)); }
-	|	'"' encaps_list '"'	{ self::filter('scalar', $$, array($1, $2, $3)); }
-	|	T_BINARY_DOUBLE encaps_list '"'	{ self::filter('scalar', $$, array($1, $2, $3)); }
-	|	start_heredoc encaps_list T_END_HEREDOC	{ self::filter('scalar', $$, array($1, $2, $3)); }
+		T_STRING_VARNAME	{ self::filter('scalar_1', $$, array($1)); }
+	|	class_constant	{ self::filter('scalar_2', $$, array($1)); }
+	|	namespace_name	{ self::filter('scalar_3', $$, array($1)); }
+	|	T_NAMESPACE T_NS_SEPARATOR namespace_name	{ self::filter('scalar_4', $$, array($1, $2, $3)); }
+	|	T_NS_SEPARATOR namespace_name	{ self::filter('scalar_5', $$, array($1, $2)); }
+	|	common_scalar	{ self::filter('scalar_6', $$, array($1)); }
+	|	'"' encaps_list '"'	{ self::filter('scalar_7', $$, array($1, $2, $3)); }
+	|	T_BINARY_DOUBLE encaps_list '"'	{ self::filter('scalar_8', $$, array($1, $2, $3)); }
+	|	start_heredoc encaps_list T_END_HEREDOC	{ self::filter('scalar_9', $$, array($1, $2, $3)); }
 ;
 
 
 static_array_pair_list:
-		/* empty */	{ self::filter('static_array_pair_list', $$, array()); }
-	|	non_empty_static_array_pair_list possible_comma	{ self::filter('static_array_pair_list', $$, array($1, $2)); }
+		/* empty */	{ self::filter('static_array_pair_list_1', $$, array()); }
+	|	non_empty_static_array_pair_list possible_comma	{ self::filter('static_array_pair_list_2', $$, array($1, $2)); }
 ;
 
 possible_comma:
-		/* empty */	{ self::filter('possible_comma', $$, array()); }
-	|	','	{ self::filter('possible_comma', $$, array($1)); }
+		/* empty */	{ self::filter('possible_comma_1', $$, array()); }
+	|	','	{ self::filter('possible_comma_2', $$, array($1)); }
 ;
 
 non_empty_static_array_pair_list:
-		non_empty_static_array_pair_list ',' static_scalar T_DOUBLE_ARROW static_scalar	{ self::filter('non_empty_static_array_pair_list', $$, array($1, $2, $3, $4, $5)); }
-	|	non_empty_static_array_pair_list ',' static_scalar	{ self::filter('non_empty_static_array_pair_list', $$, array($1, $2, $3)); }
-	|	static_scalar T_DOUBLE_ARROW static_scalar	{ self::filter('non_empty_static_array_pair_list', $$, array($1, $2, $3)); }
-	|	static_scalar	{ self::filter('non_empty_static_array_pair_list', $$, array($1)); }
+		non_empty_static_array_pair_list ',' static_scalar T_DOUBLE_ARROW static_scalar	{ self::filter('non_empty_static_array_pair_list_1', $$, array($1, $2, $3, $4, $5)); }
+	|	non_empty_static_array_pair_list ',' static_scalar	{ self::filter('non_empty_static_array_pair_list_2', $$, array($1, $2, $3)); }
+	|	static_scalar T_DOUBLE_ARROW static_scalar	{ self::filter('non_empty_static_array_pair_list_3', $$, array($1, $2, $3)); }
+	|	static_scalar	{ self::filter('non_empty_static_array_pair_list_4', $$, array($1)); }
 ;
 
 expr:
-		r_variable	{ self::filter('expr', $$, array($1)); }
-	|	expr_without_variable	{ self::filter('expr', $$, array($1)); }
+		r_variable	{ self::filter('expr_1', $$, array($1)); }
+	|	expr_without_variable	{ self::filter('expr_2', $$, array($1)); }
 ;
 
 
 r_variable:
-		variable	{ self::filter('r_variable', $$, array($1)); }
+		variable	{ self::filter('r_variable_1', $$, array($1)); }
 ;
 
 
 w_variable:
-		variable	{ self::filter('w_variable', $$, array($1)); }
+		variable	{ self::filter('w_variable_1', $$, array($1)); }
 ;
 
 rw_variable:
-		variable	{ self::filter('rw_variable', $$, array($1)); }
+		variable	{ self::filter('rw_variable_1', $$, array($1)); }
 ;
 
 variable:
-		base_variable_with_function_calls T_OBJECT_OPERATOR object_property method_or_not variable_properties	{ self::filter('variable', $$, array($1, $2, $3, $4, $5)); }
-	|	base_variable_with_function_calls	{ self::filter('variable', $$, array($1)); }
+		base_variable_with_function_calls T_OBJECT_OPERATOR object_property method_or_not variable_properties	{ self::filter('variable_1', $$, array($1, $2, $3, $4, $5)); }
+	|	base_variable_with_function_calls	{ self::filter('variable_2', $$, array($1)); }
 ;
 
 variable_properties:
-		variable_properties variable_property	{ self::filter('variable_properties', $$, array($1, $2)); }
-	|	/* empty */	{ self::filter('variable_properties', $$, array()); }
+		variable_properties variable_property	{ self::filter('variable_properties_1', $$, array($1, $2)); }
+	|	/* empty */	{ self::filter('variable_properties_2', $$, array()); }
 ;
 
 
 variable_property:
-		T_OBJECT_OPERATOR object_property method_or_not	{ self::filter('variable_property', $$, array($1, $2, $3)); }
+		T_OBJECT_OPERATOR object_property method_or_not	{ self::filter('variable_property_1', $$, array($1, $2, $3)); }
 ;
 
 method_or_not:
-		'(' { self::filter('method_or_not', $$, array($1)); }
-				function_call_parameter_list ')'
-			{ self::filter('method_or_not', $$, array($1, $2)); }
-	|	/* empty */	{ self::filter('method_or_not', $$, array()); }
+		'(' function_call_parameter_list ')' { self::filter('method_or_not_1', $$, array($1, $2, $3)); }
+	|	/* empty */	{ self::filter('method_or_not_2', $$, array()); }
 ;
 
 variable_without_objects:
-		reference_variable	{ self::filter('variable_without_objects', $$, array($1)); }
-	|	simple_indirect_reference reference_variable	{ self::filter('variable_without_objects', $$, array($1, $2)); }
+		reference_variable	{ self::filter('variable_without_objects_1', $$, array($1)); }
+	|	simple_indirect_reference reference_variable	{ self::filter('variable_without_objects_2', $$, array($1, $2)); }
 ;
 
 static_member:
-		class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects	{ self::filter('static_member', $$, array($1, $2, $3)); }
-	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects	{ self::filter('static_member', $$, array($1, $2, $3)); }
+		class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects	{ self::filter('static_member_1', $$, array($1, $2, $3)); }
+	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM variable_without_objects	{ self::filter('static_member_2', $$, array($1, $2, $3)); }
 ;
 
 variable_class_name:
-		reference_variable	{ self::filter('variable_class_name', $$, array($1)); }
+		reference_variable	{ self::filter('variable_class_name_1', $$, array($1)); }
 ;
 
 
 base_variable_with_function_calls:
-		base_variable	{ self::filter('base_variable_with_function_calls', $$, array($1)); }
-	|	function_call	{ self::filter('base_variable_with_function_calls', $$, array($1)); }
+		base_variable	{ self::filter('base_variable_with_function_calls_1', $$, array($1)); }
+	|	function_call	{ self::filter('base_variable_with_function_calls_2', $$, array($1)); }
 ;
 
 
 base_variable:
-		reference_variable	{ self::filter('base_variable', $$, array($1)); }
-	|	simple_indirect_reference reference_variable	{ self::filter('base_variable', $$, array($1, $2)); }
-	|	static_member	{ self::filter('base_variable', $$, array($1)); }
+		reference_variable	{ self::filter('base_variable_1', $$, array($1)); }
+	|	simple_indirect_reference reference_variable	{ self::filter('base_variable_2', $$, array($1, $2)); }
+	|	static_member	{ self::filter('base_variable_3', $$, array($1)); }
 ;
 
 reference_variable:
-		reference_variable '[' dim_offset ']'	{ self::filter('reference_variable', $$, array($1, $2, $3, $4)); }
-	|	reference_variable '{' expr '}'	{ self::filter('reference_variable', $$, array($1, $2, $3, $4)); }
-	|	compound_variable	{ self::filter('reference_variable', $$, array($1)); }
+		reference_variable '[' dim_offset ']'	{ self::filter('reference_variable_1', $$, array($1, $2, $3, $4)); }
+	|	reference_variable '{' expr '}'	{ self::filter('reference_variable_2', $$, array($1, $2, $3, $4)); }
+	|	compound_variable	{ self::filter('reference_variable_3', $$, array($1)); }
 ;
 
 
 compound_variable:
-		T_VARIABLE	{ self::filter('compound_variable', $$, array($1)); }
-	|	'$' '{' expr '}'	{ self::filter('compound_variable', $$, array($1, $2, $3, $4)); }
+		T_VARIABLE	{ self::filter('compound_variable_1', $$, array($1)); }
+	|	'$' '{' expr '}'	{ self::filter('compound_variable_2', $$, array($1, $2, $3, $4)); }
 ;
 
 dim_offset:
-		/* empty */	{ self::filter('dim_offset', $$, array()); }
-	|	expr	{ self::filter('dim_offset', $$, array($1)); }
+		/* empty */	{ self::filter('dim_offset_1', $$, array()); }
+	|	expr	{ self::filter('dim_offset_2', $$, array($1)); }
 ;
 
 
 object_property:
-		object_dim_list	{ self::filter('object_property', $$, array($1)); }
-	|	variable_without_objects	{ self::filter('object_property', $$, array($1)); }
+		object_dim_list	{ self::filter('object_property_1', $$, array($1)); }
+	|	variable_without_objects	{ self::filter('object_property_2', $$, array($1)); }
 ;
 
 object_dim_list:
-		object_dim_list '[' dim_offset ']'	{ self::filter('object_dim_list', $$, array($1, $2, $3, $4)); }
-	|	object_dim_list '{' expr '}'	{ self::filter('object_dim_list', $$, array($1, $2, $3, $4)); }
-	|	variable_name	{ self::filter('object_dim_list', $$, array($1)); }
+		object_dim_list '[' dim_offset ']'	{ self::filter('object_dim_list_1', $$, array($1, $2, $3, $4)); }
+	|	object_dim_list '{' expr '}'	{ self::filter('object_dim_list_2', $$, array($1, $2, $3, $4)); }
+	|	variable_name	{ self::filter('object_dim_list_3', $$, array($1)); }
 ;
 
 variable_name:
-		T_STRING	{ self::filter('variable_name', $$, array($1)); }
-	|	'{' expr '}'	{ self::filter('variable_name', $$, array($1, $2, $3)); }
+		T_STRING	{ self::filter('variable_name_1', $$, array($1)); }
+	|	'{' expr '}'	{ self::filter('variable_name_2', $$, array($1, $2, $3)); }
 ;
 
 simple_indirect_reference:
-		'$'	{ self::filter('simple_indirect_reference', $$, array($1)); }
-	|	simple_indirect_reference '$'	{ self::filter('simple_indirect_reference', $$, array($1, $2)); }
+		'$'	{ self::filter('simple_indirect_reference_1', $$, array($1)); }
+	|	simple_indirect_reference '$'	{ self::filter('simple_indirect_reference_2', $$, array($1, $2)); }
 ;
 
 assignment_list:
-		assignment_list ',' assignment_list_element	{ self::filter('assignment_list', $$, array($1, $2, $3)); }
-	|	assignment_list_element	{ self::filter('assignment_list', $$, array($1)); }
+		assignment_list ',' assignment_list_element	{ self::filter('assignment_list_1', $$, array($1, $2, $3)); }
+	|	assignment_list_element	{ self::filter('assignment_list_2', $$, array($1)); }
 ;
 
 
 assignment_list_element:
-		variable	{ self::filter('assignment_list_element', $$, array($1)); }
-	|	T_LIST '(' assignment_list ')'	{ self::filter('assignment_list_element', $$, array($1, $2, $3, $4)); }
-	|	/* empty */	{ self::filter('assignment_list_element', $$, array()); }
+		variable	{ self::filter('assignment_list_element_1', $$, array($1)); }
+	|	T_LIST '(' assignment_list ')'	{ self::filter('assignment_list_element_2', $$, array($1, $2, $3, $4)); }
+	|	/* empty */	{ self::filter('assignment_list_element_3', $$, array()); }
 ;
 
 
 array_pair_list:
-		/* empty */	{ self::filter('array_pair_list', $$, array()); }
-	|	non_empty_array_pair_list possible_comma	{ self::filter('array_pair_list', $$, array($1, $2)); }
+		/* empty */	{ self::filter('array_pair_list_1', $$, array()); }
+	|	non_empty_array_pair_list possible_comma	{ self::filter('array_pair_list_2', $$, array($1, $2)); }
 ;
 
 non_empty_array_pair_list:
-		non_empty_array_pair_list ',' expr T_DOUBLE_ARROW expr	{ self::filter('non_empty_array_pair_list', $$, array($1, $2, $3, $4, $5)); }
-	|	non_empty_array_pair_list ',' expr	{ self::filter('non_empty_array_pair_list', $$, array($1, $2, $3)); }
-	|	expr T_DOUBLE_ARROW expr	{ self::filter('non_empty_array_pair_list', $$, array($1, $2, $3)); }
-	|	expr	{ self::filter('non_empty_array_pair_list', $$, array($1)); }
-	|	non_empty_array_pair_list ',' expr T_DOUBLE_ARROW '&' w_variable	{ self::filter('non_empty_array_pair_list', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	non_empty_array_pair_list ',' '&' w_variable	{ self::filter('non_empty_array_pair_list', $$, array($1, $2, $3, $4)); }
-	|	expr T_DOUBLE_ARROW '&' w_variable	{ self::filter('non_empty_array_pair_list', $$, array($1, $2, $3, $4)); }
-	|	'&' w_variable	{ self::filter('non_empty_array_pair_list', $$, array($1, $2)); }
+		non_empty_array_pair_list ',' expr T_DOUBLE_ARROW expr	{ self::filter('non_empty_array_pair_list_1', $$, array($1, $2, $3, $4, $5)); }
+	|	non_empty_array_pair_list ',' expr	{ self::filter('non_empty_array_pair_list_2', $$, array($1, $2, $3)); }
+	|	expr T_DOUBLE_ARROW expr	{ self::filter('non_empty_array_pair_list_3', $$, array($1, $2, $3)); }
+	|	expr	{ self::filter('non_empty_array_pair_list_4', $$, array($1)); }
+	|	non_empty_array_pair_list ',' expr T_DOUBLE_ARROW '&' w_variable	{ self::filter('non_empty_array_pair_list_5', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	non_empty_array_pair_list ',' '&' w_variable	{ self::filter('non_empty_array_pair_list_6', $$, array($1, $2, $3, $4)); }
+	|	expr T_DOUBLE_ARROW '&' w_variable	{ self::filter('non_empty_array_pair_list_7', $$, array($1, $2, $3, $4)); }
+	|	'&' w_variable	{ self::filter('non_empty_array_pair_list_8', $$, array($1, $2)); }
 ;
 
 encaps_list:
-		encaps_list encaps_var	{ self::filter('encaps_list', $$, array($1, $2)); }
-	|	encaps_list T_ENCAPSED_AND_WHITESPACE	{ self::filter('encaps_list', $$, array($1, $2)); }
-	|	encaps_var	{ self::filter('encaps_list', $$, array($1)); }
-	|	T_ENCAPSED_AND_WHITESPACE encaps_var	{ self::filter('encaps_list', $$, array($1, $2)); }
+		encaps_list encaps_var	{ self::filter('encaps_list_1', $$, array($1, $2)); }
+	|	encaps_list T_ENCAPSED_AND_WHITESPACE	{ self::filter('encaps_list_2', $$, array($1, $2)); }
+	|	encaps_var	{ self::filter('encaps_list_3', $$, array($1)); }
+	|	T_ENCAPSED_AND_WHITESPACE encaps_var	{ self::filter('encaps_list_4', $$, array($1, $2)); }
 ;
 
 
 
 encaps_var:
-		T_VARIABLE	{ self::filter('encaps_var', $$, array($1)); }
-	|	T_VARIABLE '[' encaps_var_offset ']'	{ self::filter('encaps_var', $$, array($1, $2, $3, $4)); }
-	|	T_VARIABLE T_OBJECT_OPERATOR T_STRING	{ self::filter('encaps_var', $$, array($1, $2, $3)); }
-	|	T_DOLLAR_OPEN_CURLY_BRACES expr '}'	{ self::filter('encaps_var', $$, array($1, $2, $3)); }
-	|	T_DOLLAR_OPEN_CURLY_BRACES T_STRING_VARNAME '[' expr ']' '}'	{ self::filter('encaps_var', $$, array($1, $2, $3, $4, $5, $6)); }
-	|	T_CURLY_OPEN variable '}'	{ self::filter('encaps_var', $$, array($1, $2, $3)); }
+		T_VARIABLE	{ self::filter('encaps_var_1', $$, array($1)); }
+	|	T_VARIABLE '[' encaps_var_offset ']'	{ self::filter('encaps_var_2', $$, array($1, $2, $3, $4)); }
+	|	T_VARIABLE T_OBJECT_OPERATOR T_STRING	{ self::filter('encaps_var_3', $$, array($1, $2, $3)); }
+	|	T_DOLLAR_OPEN_CURLY_BRACES expr '}'	{ self::filter('encaps_var_4', $$, array($1, $2, $3)); }
+	|	T_DOLLAR_OPEN_CURLY_BRACES T_STRING_VARNAME '[' expr ']' '}'	{ self::filter('encaps_var_5', $$, array($1, $2, $3, $4, $5, $6)); }
+	|	T_CURLY_OPEN variable '}'	{ self::filter('encaps_var_6', $$, array($1, $2, $3)); }
 ;
 
 
 encaps_var_offset:
-		T_STRING	{ self::filter('encaps_var_offset', $$, array($1)); }
-	|	T_NUM_STRING	{ self::filter('encaps_var_offset', $$, array($1)); }
-	|	T_VARIABLE	{ self::filter('encaps_var_offset', $$, array($1)); }
+		T_STRING	{ self::filter('encaps_var_offset_1', $$, array($1)); }
+	|	T_NUM_STRING	{ self::filter('encaps_var_offset_2', $$, array($1)); }
+	|	T_VARIABLE	{ self::filter('encaps_var_offset_3', $$, array($1)); }
 ;
 
 
 internal_functions_in_yacc:
-		T_ISSET '(' isset_variables ')'	{ self::filter('internal_functions_in_yacc', $$, array($1, $2, $3, $4)); }
-	|	T_EMPTY '(' variable ')'	{ self::filter('internal_functions_in_yacc', $$, array($1, $2, $3, $4)); }
-	|	T_INCLUDE expr	{ self::filter('internal_functions_in_yacc', $$, array($1, $2)); }
-	|	T_INCLUDE_ONCE expr	{ self::filter('internal_functions_in_yacc', $$, array($1, $2)); }
-	|	T_EVAL '(' expr ')'	{ self::filter('internal_functions_in_yacc', $$, array($1, $2, $3, $4)); }
-	|	T_REQUIRE expr	{ self::filter('internal_functions_in_yacc', $$, array($1, $2)); }
-	|	T_REQUIRE_ONCE expr	{ self::filter('internal_functions_in_yacc', $$, array($1, $2)); }
+		T_ISSET '(' isset_variables ')'	{ self::filter('internal_functions_in_yacc_1', $$, array($1, $2, $3, $4)); }
+	|	T_EMPTY '(' variable ')'	{ self::filter('internal_functions_in_yacc_2', $$, array($1, $2, $3, $4)); }
+	|	T_INCLUDE expr	{ self::filter('internal_functions_in_yacc_3', $$, array($1, $2)); }
+	|	T_INCLUDE_ONCE expr	{ self::filter('internal_functions_in_yacc_4', $$, array($1, $2)); }
+	|	T_EVAL '(' expr ')'	{ self::filter('internal_functions_in_yacc_5', $$, array($1, $2, $3, $4)); }
+	|	T_REQUIRE expr	{ self::filter('internal_functions_in_yacc_6', $$, array($1, $2)); }
+	|	T_REQUIRE_ONCE expr	{ self::filter('internal_functions_in_yacc_7', $$, array($1, $2)); }
 ;
 
 isset_variables:
-		variable	{ self::filter('isset_variables', $$, array($1)); }
-	|	isset_variables ',' variable	{ self::filter('isset_variables', $$, array($1, $2, $3)); }
+		variable	{ self::filter('isset_variables_1', $$, array($1)); }
+	|	isset_variables ',' variable	{ self::filter('isset_variables_2', $$, array($1, $2, $3)); }
 ;
 
 class_constant:
-		class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING	{ self::filter('class_constant', $$, array($1, $2, $3)); }
-	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING	{ self::filter('class_constant', $$, array($1, $2, $3)); }
+		class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING	{ self::filter('class_constant_1', $$, array($1, $2, $3)); }
+	|	variable_class_name T_PAAMAYIM_NEKUDOTAYIM T_STRING	{ self::filter('class_constant_2', $$, array($1, $2, $3)); }
 ;
 
 %%
