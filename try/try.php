@@ -8,9 +8,13 @@ set_include_path(realpath(dirname(__FILE__)) . PATH_SEPARATOR .
                  );
 
 require_once 'Stagehand/PHP/Parser.php';
-/* require_once 'Stagehand/PHP/Lexer.php'; */
+require_once 'Stagehand/PHP/Parser/Dumb.php';
+require_once 'Stagehand/PHP/Lexer.php';
 
-$p = new Stagehand_PHP_Parser();
-$p->parse('./example.php');
+$lexer = new Stagehand_PHP_Lexer('./example.php');
+$filter = new Stagehand_PHP_Parser_Dumb();
+$parser = new Stagehand_PHP_Parser($lexer, $filter);
 
-var_dump($p->yyval());
+$parser->parse();
+
+var_dump($parser->yyval());
