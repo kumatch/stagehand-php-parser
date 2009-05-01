@@ -6,44 +6,10 @@ $meta @
 @semval(%n,%t) $this->yyastk[$this->yysp-(%l-%n)]
 @include;
 
-require_once 'Stagehand/PHP/Lexer.php';
-
 /* Prototype file of classed PHP parser.
  * Written by Moriyoshi Koizumi, based on the work by Masato Bito.
  * This file is PUBLIC DOMAIN.
  */
-
-@if -p
-class @(-p)YYToken
-@endif
-@ifnot -p
-class YYToken
-@endif
-{
-    private $_name;
-    private $_values;
-
-    public function __construct($name, $values)
-    {
-        $this->_name = $name;
-        $this->_values = $values;
-    }
-
-    public function getName()
-    {
-        return $this->_name;
-    }
-
-    public function getValues()
-    {
-        return $this->_values;
-    }
-
-    public function addValue($value)
-    {
-        $this->_values[] = $value;
-    }
-}
 
 @if -p
 class @(-p)
@@ -70,6 +36,9 @@ class YYParser
     const %s = %n;
 @endtokenval
     // }}}
+
+    protected $lexer;
+    protected $filter;
 
     protected $yyval;
     protected $yyastk;
@@ -136,33 +105,33 @@ class YYParser
         @listvar yylen
     );
 
-    protected function yyprintln($msg) 
+    protected function yyprintln($msg)
     {
         echo "$msg\n";
     }
 
-    protected function yyflush() 
+    protected function yyflush()
     {
         return;
     }
 
-    protected function yyerror($msg) 
+    protected function yyerror($msg)
     {
         $this->yyprintln($msg);
     }
 
-    protected function yyaccept() 
+    protected function yyaccept()
     {
         $this->yyaccept = 1;
     }
 
-    protected function yyabort() 
+    protected function yyabort()
     {
         $this->yyaccept = 2;
     }
 
 @if -t
-    public static function yytokname($n) 
+    public static function yytokname($n)
     {
         switch ($n) {
         @switch-for-token-name;
@@ -391,32 +360,44 @@ class YYParser
         $this->lex = null;
     }
 
-    public function parse($file)
+    public function __construct($lexer, $filter = null)
     {
-        $lexer = new Stagehand_PHP_Lexer($file);
-        $this->yyparse($lexer);
+        $this->setLexer($lexer);
+
+        if (is_null($filter)) {
+            $filter = new Stagehand_PHP_Parser_Dumb();
+        }
+        $this->setFilter($filter);
     }
 
-    public function yyval() 
+    public function setLexer($lexer)
+    {
+        $this->lexer = $lexer;
+    }
+
+    public function setFilter($filter)
+    {
+        $this->filter = $filter;
+    }
+
+    public function parse()
+    {
+        $this->yyparse($this->lexer);
+    }
+
+    public function yyval()
     {
         return $this->yyval;
     }
 
     public function filter($name, &$yyval, $params)
     {
-@if -p
-        $className = '@(-p)YYToken';
-@endif
-@ifnot -p
-        $className = 'YYToken';
-@endif
-
-        $yyval = new $className($name, $params);
+        $yyval = $this->filter->execute($name, $params);
     }
 
 @reduce
 
-    private function yyn%n() 
+    private function yyn%n()
     {
         %b
     }
