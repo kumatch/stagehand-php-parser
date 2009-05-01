@@ -1,0 +1,134 @@
+array(1) {
+  [0]=>
+  object(Stagehand_PHP_Parser_YYToken)#4 (2) {
+    ["_name:private"]=>
+    string(20) "top_statement_list_2"
+    ["_values:private"]=>
+    array(1) {
+      [0]=>
+      object(Stagehand_PHP_Parser_YYToken)#17 (2) {
+        ["_name:private"]=>
+        string(15) "top_statement_3"
+        ["_values:private"]=>
+        array(1) {
+          [0]=>
+          object(Stagehand_PHP_Parser_YYToken)#16 (2) {
+            ["_name:private"]=>
+            string(29) "class_declaration_statement_1"
+            ["_values:private"]=>
+            array(1) {
+              [0]=>
+              object(Stagehand_PHP_Parser_YYToken)#15 (2) {
+                ["_name:private"]=>
+                string(38) "unticked_class_declaration_statement_2"
+                ["_values:private"]=>
+                array(6) {
+                  [0]=>
+                  object(Stagehand_PHP_Parser_YYToken)#5 (2) {
+                    ["_name:private"]=>
+                    string(17) "interface_entry_1"
+                    ["_values:private"]=>
+                    array(1) {
+                      [0]=>
+                      string(9) "interface"
+                    }
+                  }
+                  [1]=>
+                  string(3) "Foo"
+                  [2]=>
+                  object(Stagehand_PHP_Parser_YYToken)#13 (2) {
+                    ["_name:private"]=>
+                    string(24) "interface_extends_list_2"
+                    ["_values:private"]=>
+                    array(2) {
+                      [0]=>
+                      string(7) "extends"
+                      [1]=>
+                      object(Stagehand_PHP_Parser_YYToken)#8 (2) {
+                        ["_name:private"]=>
+                        string(16) "interface_list_1"
+                        ["_values:private"]=>
+                        array(5) {
+                          [0]=>
+                          object(Stagehand_PHP_Parser_YYToken)#7 (2) {
+                            ["_name:private"]=>
+                            string(28) "fully_qualified_class_name_1"
+                            ["_values:private"]=>
+                            array(1) {
+                              [0]=>
+                              object(Stagehand_PHP_Parser_YYToken)#6 (2) {
+                                ["_name:private"]=>
+                                string(16) "namespace_name_1"
+                                ["_values:private"]=>
+                                array(1) {
+                                  [0]=>
+                                  string(1) "a"
+                                }
+                              }
+                            }
+                          }
+                          [1]=>
+                          string(1) ","
+                          [2]=>
+                          object(Stagehand_PHP_Parser_YYToken)#10 (2) {
+                            ["_name:private"]=>
+                            string(28) "fully_qualified_class_name_1"
+                            ["_values:private"]=>
+                            array(1) {
+                              [0]=>
+                              object(Stagehand_PHP_Parser_YYToken)#9 (2) {
+                                ["_name:private"]=>
+                                string(16) "namespace_name_1"
+                                ["_values:private"]=>
+                                array(1) {
+                                  [0]=>
+                                  string(1) "b"
+                                }
+                              }
+                            }
+                          }
+                          [3]=>
+                          string(1) ","
+                          [4]=>
+                          object(Stagehand_PHP_Parser_YYToken)#12 (2) {
+                            ["_name:private"]=>
+                            string(28) "fully_qualified_class_name_1"
+                            ["_values:private"]=>
+                            array(1) {
+                              [0]=>
+                              object(Stagehand_PHP_Parser_YYToken)#11 (2) {
+                                ["_name:private"]=>
+                                string(16) "namespace_name_1"
+                                ["_values:private"]=>
+                                array(1) {
+                                  [0]=>
+                                  string(1) "c"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  [3]=>
+                  string(1) "{"
+                  [4]=>
+                  object(Stagehand_PHP_Parser_YYToken)#14 (2) {
+                    ["_name:private"]=>
+                    string(22) "class_statement_list_2"
+                    ["_values:private"]=>
+                    array(0) {
+                    }
+                  }
+                  [5]=>
+                  string(1) "}"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
