@@ -58,4 +58,22 @@ class Stagehand_PHP_Parser_Stand extends Stagehand_PHP_Parser_Dumb
         var_dump($params[1]);
         return parent::execute(__FUNCTION__, $params);
     }
+
+    private function method_body_2($params)
+    {
+        $lex = $this->getParser()->lex;
+        $methodTokens = $lex->getTokens($params[0]->getPos() + 1, $params[2]->getPos() - 1);
+
+        $code = null;
+        foreach ($methodTokens as $token) {
+            if (is_array($token)) {
+                $code .= $token[1];
+            } else {
+                $code .= $token;
+            }
+        }
+        var_dump($code);
+
+        return parent::execute(__FUNCTION__, $params);
+    }
 }

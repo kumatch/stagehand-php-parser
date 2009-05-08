@@ -1,11 +1,11 @@
 <?php
 require_once 'Stagehand/PHP/Parser.php';
+require_once 'Stagehand/PHP/Parser/Token.php';
 
 class Stagehand_PHP_Lexer
 {
     private $_pos;
     private $_tokens;
-    private $_parserName = 'Stagehand_PHP_Parser';
 
     function __construct($file)
     {
@@ -16,19 +16,20 @@ class Stagehand_PHP_Lexer
     function yylex(&$yylval)
     {
         while (1) {
-            $token = @$this->_tokens[$this->_pos];
+            $pos = $this->_pos;
+            $token = @$this->_tokens[$pos];
             ++$this->_pos;
 
             if (!$token) {
                 return 0;
             }
 
-            if (is_string($token)) {
-                $yylval = $token;
+            if (!is_array($token)) {
+                $yylval = new Stagehand_PHP_Parser_Token($token, $pos);
                 return ord($yylval);
             } else {
                 $name = token_name($token[0]);
-                $yylval = $token[1];
+                $yylval = new Stagehand_PHP_Parser_Token($token[1], $pos);
 
                 $ignoreList = array('T_OPEN_TAG', 'T_CLOSE_TAG', 'T_WHITESPACE',
                                     'T_COMMENT', 'T_DOC_COMMENT', 'T_INLINE_HTML', 
@@ -44,5 +45,21 @@ class Stagehand_PHP_Lexer
                 return constant("Stagehand_PHP_Parser::{$name}");
             }
         }
+    }
+
+    function getTokens($from = 0, $to = -1)
+    {
+        if ($to < 0) {
+            $to = count($this->_tokens) - 1;
+        }
+
+        $tokens = array();
+        for ($i = $from; $i <= $to; ++$i) {
+            if (isset($this->_tokens[$i])) {
+                array_push($tokens, $this->_tokens[$i]);
+            }
+        }
+
+        return $tokens;
     }
 }

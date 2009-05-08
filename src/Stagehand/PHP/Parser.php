@@ -1072,11 +1072,11 @@ class Stagehand_PHP_Parser
 
     public function __construct($lexer, $filter = null)
     {
-        $this->setLexer($lexer);
-
         if (is_null($filter)) {
             $filter = new Stagehand_PHP_Parser_Dumb();
         }
+
+        $this->setLexer($lexer);
         $this->setFilter($filter);
     }
 
@@ -1088,6 +1088,7 @@ class Stagehand_PHP_Parser
     public function setFilter($filter)
     {
         $this->filter = $filter;
+        $this->filter->setParser($this);
     }
 
     public function parse()
