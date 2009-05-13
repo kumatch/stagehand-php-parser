@@ -7,7 +7,8 @@ $meta @
 @include;
 
 /* Prototype file of classed PHP parser.
- * Written by Moriyoshi Koizumi, based on the work by Masato Bito.
+ * Written by Moriyoshi Koizumi, based on the work by Masato Bito,
+ * and expanded for Stagehand_PHP_Parser by KUMAKURA Yousuke.
  * This file is PUBLIC DOMAIN.
  */
 
