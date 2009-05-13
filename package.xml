@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Stagehand_PHP_Lexer</name>
+ <channel>pear.piece-framework.com</channel>
+ <summary>A class for parsing PHP script.</summary>
+ <description>A class for parsing PHP script.</description>
+ <lead>
+  <name>KUMAKURA Yousuke</name>
+  <user>kumatch</user>
+  <email>kumatch@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2009-05-13</date>
+ <time>16:37:17</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.zend.com/license/2_00.txt">Zend License</license>
+ <notes>
+The initial release of Stagehand_PHP_Parser.
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <dir name="src">
+    <dir name="Stagehand">
+     <dir name="PHP">
+      <dir name="Parser">
+       <file name="Dumb.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file name="YYToken.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /src/Stagehand/PHP/Parser -->
+      <file name="kmyacc.class.php.parser" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="Parser.php" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="zend_language_parser.phpy" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+      <file name="zend_language_parser.y" role="php">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+     </dir> <!-- /src/Stagehand/PHP -->
+    </dir> <!-- /src/Stagehand -->
+   </dir> <!-- /src -->
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.3</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-05-13</date>
+   <license uri="http://www.zend.com/license/2_00.txt">Zend License</license>
+   <notes>
+The initial release of Stagehand_PHP_Parser.
+   </notes>
+  </release>
+ </changelog>
+</package>
