@@ -2,6 +2,8 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
+ * PHP version 5
+ *
  * Copyright (c) 1998-2009 Zend Technologies Ltd. (http://www.zend.com)
  *
  * This source file is subject to version 2.00 of the Zend license,
@@ -11,8 +13,27 @@
  * If you did not receive a copy of the Zend license and are unable to
  * obtain it through the world-wide-web, please send a note to
  * license@zend.com so we can mail you a copy immediately.
+ *
+ * @package    sh-php-parser
+ * @copyright  1998-2009 Zend Technologies Ltd. (http://www.zend.com)
+ * @copyright  2009 KUMAKURA Yousuke <kumatch@gmail.com>
+ * @license    http://www.zend.com/license/2_00.txt.  Zend License
+ * @version    Release: @package_version@
+ * @since      File available since Release 0.1.0
  */
 
+// {{{ Stagehand_PHP_Parser
+
+/**
+ * A class for parsing PHP script.
+ *
+ * @package    sh-php-parser
+ * @copyright  1998-2009 Zend Technologies Ltd. (http://www.zend.com)
+ * @copyright  2009 KUMAKURA Yousuke <kumatch@gmail.com>
+ * @license    http://www.zend.com/license/2_00.txt.  Zend License
+ * @version    Release: @package_version@
+ * @since      Class available since Release 0.1.0
+ */
 class Stagehand_PHP_Parser
 {
     const YYBADCH      = 149;
