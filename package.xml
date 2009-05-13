@@ -3,7 +3,7 @@
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
- <name>Stagehand_PHP_Lexer</name>
+ <name>Stagehand_PHP_Parser</name>
  <channel>pear.piece-framework.com</channel>
  <summary>A class for parsing PHP script.</summary>
  <description>A class for parsing PHP script.</description>
@@ -14,7 +14,7 @@
   <active>yes</active>
  </lead>
  <date>2009-05-13</date>
- <time>16:37:17</time>
+ <time>16:41:40</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>

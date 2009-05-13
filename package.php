@@ -47,7 +47,7 @@ $package->setOptions(array('filelistgenerator' => 'file',
                            'ignore' => array('package.php', 'data/'))
                      );
  
-$package->setPackage('Stagehand_PHP_Lexer');
+$package->setPackage('Stagehand_PHP_Parser');
 $package->setPackageType('php');
 $package->setSummary('A class for parsing PHP script.');
 $package->setDescription('A class for parsing PHP script.');
