@@ -887,7 +887,7 @@ class Stagehand_PHP_Parser
 
     protected function yyerror($msg)
     {
-        $this->yyprintln($msg);
+        throw new Stagehand_PHP_Parser_Exception($msg);
     }
 
     protected function yyaccept()
