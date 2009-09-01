@@ -14,7 +14,7 @@
  * obtain it through the world-wide-web, please send a note to
  * license@zend.com so we can mail you a copy immediately.
  *
- * @package    sh-php-parser
+ * @package    stagehand-php-parser
  * @copyright  1998-2009 Zend Technologies Ltd. (http://www.zend.com)
  * @copyright  2009 KUMAKURA Yousuke <kumatch@gmail.com>
  * @license    http://www.zend.com/license/2_00.txt.  Zend License
@@ -27,7 +27,7 @@
 /**
  * An Exception class for PHP parser.
  *
- * @package    sh-php-parser
+ * @package    stagehand-php-parser
  * @copyright  1998-2009 Zend Technologies Ltd. (http://www.zend.com)
  * @copyright  2009 KUMAKURA Yousuke <kumatch@gmail.com>
  * @license    http://www.zend.com/license/2_00.txt.  Zend License
