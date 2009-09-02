@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0RC4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -13,8 +13,8 @@
   <email>kumatch@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2009-05-13</date>
- <time>16:41:40</time>
+ <date>2009-09-02</date>
+ <time>17:59:09</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -34,6 +34,9 @@ The initial release of Stagehand_PHP_Parser.
      <dir name="PHP">
       <dir name="Parser">
        <file name="Dumb.php" role="php">
+        <tasks:replace from="@package_version@" to="version" type="package-info" />
+       </file>
+       <file name="Exception.php" role="php">
         <tasks:replace from="@package_version@" to="version" type="package-info" />
        </file>
        <file name="YYToken.php" role="php">
@@ -78,7 +81,7 @@ The initial release of Stagehand_PHP_Parser.
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2009-05-13</date>
+   <date>2009-09-02</date>
    <license uri="http://www.zend.com/license/2_00.txt">Zend License</license>
    <notes>
 The initial release of Stagehand_PHP_Parser.
