@@ -248,12 +248,12 @@ class YYParser
                         $yysstk[$this->yysp] = $yystate = $yyn;
                         $this->yyastk[$this->yysp] = $yylval;
                         $yychar = -1;
-                        
+
                         if ($yyerrflag > 0)
                             $yyerrflag--;
                         if ($yyn < self::YYNLSTATES)
                             continue;
-                            
+
                         /* $yyn >= YYNLSTATES means shift-and-reduce */
                         $yyn -= self::YYNLSTATES;
                     } else {
@@ -263,7 +263,7 @@ class YYParser
                     $yyn = self::$yydefault[$yystate];
                 }
             }
-                
+
             for (;;) {
                 /* reduce/error */
                 if ($yyn == 0) {
@@ -351,7 +351,7 @@ class YYParser
                         break;
                     }
                 }
-                    
+
                 if ($yystate < self::YYNLSTATES)
                     break;
                 /* >= YYNLSTATES means shift-and-reduce */
