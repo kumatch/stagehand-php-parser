@@ -21,18 +21,18 @@
  * @version    Release: @package_version@
  * @since      File available since Release 0.1.0
  */
- 
+
 require_once 'PEAR/PackageFileManager2.php';
 require_once 'PEAR.php';
- 
+
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
- 
+
 $releaseVersion = '0.1.0';
 $releaseStability = 'beta';
 $apiVersion = '0.1.0';
 $apiStability = 'beta';
 $notes = 'The initial release of Stagehand_PHP_Parser.';
- 
+
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
                            'changelogoldtonew' => false,
@@ -46,7 +46,7 @@ $package->setOptions(array('filelistgenerator' => 'file',
                                                 'tests' => 'test'),
                            'ignore' => array('package.php', 'data/'))
                      );
- 
+
 $package->setPackage('Stagehand_PHP_Parser');
 $package->setPackageType('php');
 $package->setSummary('A class for parsing PHP script.');
@@ -63,14 +63,14 @@ $package->setPearinstallerDep('1.4.3');
 $package->addMaintainer('lead', 'kumatch', 'KUMAKURA Yousuke', 'kumatch@gmail.com');
 $package->addGlobalReplacement('package-info', '@package_version@', 'version');
 $package->generateContents();
- 
+
 if (array_key_exists(1, $_SERVER['argv']) && $_SERVER['argv'][1] == 'make') {
     $package->writePackageFile();
 } else {
     $package->debugPackageFile();
 }
- 
-exit(); 
+
+exit();
 
 /*
 * Local Variables:
